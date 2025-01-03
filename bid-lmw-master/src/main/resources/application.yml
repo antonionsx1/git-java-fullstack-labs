@@ -1,0 +1,67 @@
+server:
+  servlet:
+    session:
+      timeout: 60s
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: robodemo486@gmail.com
+    password: tcmioxjkvyagyrnc
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/lmw
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: update  # o 'none', 'validate', 'create', 'create-drop'
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 10GB
+  redis:
+    host: redis
+    ##host: localhost
+    port: 6379
+  
+security:
+  jwt:
+    key: S3cur1ty#
+  cors:
+    origin: '*'
+    ##origin: http://omnideal.s3-website-us-east-1.amazonaws.com
+  gen-password-link: http://http://omnideal.s3-website-us-east-1.amazonaws.com/
+  contact-email: lmw@idb.org
+data:
+  dataset:
+    path: ./LMW/Datasets/Temporal/
+    download-path: ./LMW/Datasets/Downloads/
+    backup-path: ./LMW/Datasets/Backups/
+    prefix: LMW_Dataset_
+    ext: .csv
+    tree-prefix-regex: _[0-9][0-9]_
+    dates-col: es_fecha
+  sql:
+    schema: public
+    lmw-table-name: latinmacrowatch
+    lmw-primary-key: lmwUUID
+    page-size: 100
+metadata:
+  fileName: metadata.pdf
+  uploadDir: ./LMW/Metadata/

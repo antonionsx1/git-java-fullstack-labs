@@ -1,0 +1,68 @@
+server:
+  servlet:
+    session:
+      timeout: 60s
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: robodemo486@gmail.com
+    password: tcmioxjkvyagyrnc
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/lmw
+    username: postgres
+    password: develop
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 2
+      max-lifetime: 1800000
+      idle-timeout: 600000
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: update
+      temp:
+        use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 10GB
+  redis:
+    host: localhost
+    port: 6379
+  
+security:
+  jwt:
+    key: S3cur1ty#
+data:
+  dataset:
+    path: ./LMW/Test/Datasets/Temporal/
+    download-path: ./LMW/Test/Datasets/Downloads/
+    backup-path: ./LMW/Test/Datasets/Backups/
+    prefix: LMW_Dataset_Test_
+    ext: .csv
+    tree-prefix-regex: _[0-9][0-9]_
+    dates-col: es_fecha
+  sql:
+    schema: public
+    lmw-table-name: latinmacrowatchtest
+    lmw-primary-key: lmwUUID
+    page-size: 2
+metadata:
+  fileName: metadata.pdf
+  uploadDir: ./LMW/Metadata/
+    

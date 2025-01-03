@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis-server:
+    hostname: redis
+    image: 'redis'
+    ports:
+      - "6379:6379"
+  lmw:
+    build: .
+    links:
+      - redis-server
+    ports:
+      - "8080:8080"
+    extra_hosts:
+    - 'postgres:44.199.78.204'
+    volumes:
+    - './LMW/:/LMW/'
