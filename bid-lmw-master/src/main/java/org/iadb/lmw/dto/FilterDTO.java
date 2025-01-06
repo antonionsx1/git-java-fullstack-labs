@@ -21,4 +21,5 @@ public class FilterDTO implements Serializable {
     private String header;
     private List<String> conditions;
 
+
 }
