@@ -7,10 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CountryDao extends CrudRepository<Country, Integer> {
 
-	// --- Métodos de búsqueda existentes ---
-	List<Country> findAll();
+    // --- Métodos de búsqueda existentes ---
+    List<Country> findAll();
 
-	List<Country> findByNameEs(String nameEs);
-	
-	List<Country> findByNameEn(String nameEn);
+    List<Country> findByNameEs(String nameEs);
+
+    List<Country> findByNameEn(String nameEn);
 }

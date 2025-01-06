@@ -19,15 +19,15 @@ import lombok.ToString;
 @Entity
 public class Country {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String nameEs;
-	private String nameEn;
-	@Column(columnDefinition="TEXT")
-	private String flag;
-	private String color;
-	private String code;
-	private Date regDate;
-	private Boolean status;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String nameEs;
+    private String nameEn;
+    @Column(columnDefinition = "TEXT")
+    private String flag;
+    private String color;
+    private String code;
+    private Date regDate;
+    private Boolean status;
 }
