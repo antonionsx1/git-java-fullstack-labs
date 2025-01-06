@@ -14,8 +14,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class DeleteAdminResponseDto implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	private String message;
-	
+
+    private static final long serialVersionUID = 1L;
+    private String message;
+
 }
