@@ -19,6 +19,9 @@ import lombok.ToString;
 @Entity
 public class Country {
 
+    /**
+     * Identificador único del país
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
