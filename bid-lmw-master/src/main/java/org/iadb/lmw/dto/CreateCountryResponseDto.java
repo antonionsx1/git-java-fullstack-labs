@@ -12,11 +12,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor   
+@AllArgsConstructor
 @ToString
 public class CreateCountryResponseDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
     private String message;
+
 }
