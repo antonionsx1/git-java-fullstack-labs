@@ -10,9 +10,9 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class RecoverPasswordDto implements Serializable{
+public class RecoverPasswordDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@NotBlank(message = "email no debe estar vacío")
-	private String email;
+    private static final long serialVersionUID = 1L;
+    @NotBlank(message = "email no debe estar vacío")
+    private String email;
 }
