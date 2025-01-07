@@ -17,9 +17,9 @@ import lombok.ToString;
 @ToString
 public class UpdateCountryRequestDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@NotNull(message = "id no debe estár vacío")
-	private Integer id;
-	@NotBlank(message = "color no debe estár vacío")
-	private String color;
+    private static final long serialVersionUID = 1L;
+    @NotNull(message = "id no debe estár vacío")
+    private Integer id;
+    @NotBlank(message = "color no debe estár vacío")
+    private String color;
 }
