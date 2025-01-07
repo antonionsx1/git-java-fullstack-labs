@@ -16,10 +16,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class FilterDTO implements Serializable
-{
-	private static final long serialVersionUID = 1L;
-	private String header;
-	private List<String> conditions;
-	
+public class FilterDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String header;
+    private List<String> conditions;
+
 }
