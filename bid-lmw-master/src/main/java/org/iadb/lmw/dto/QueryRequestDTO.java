@@ -16,13 +16,13 @@ import lombok.ToString;
 @ToString
 public class QueryRequestDTO implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private Boolean useDistinct;
-	private Boolean usePagination;
-	private Boolean useDates;
-	private String startDate;
-	private String endDate;
-	private Integer pageOffset;
-	private List<FilterDTO> filters;
+    private static final long serialVersionUID = 1L;
+    private Boolean useDistinct;
+    private Boolean usePagination;
+    private Boolean useDates;
+    private String startDate;
+    private String endDate;
+    private Integer pageOffset;
+    private List<FilterDTO> filters;
 
 }
