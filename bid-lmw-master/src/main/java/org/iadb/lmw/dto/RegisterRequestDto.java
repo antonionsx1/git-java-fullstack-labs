@@ -13,16 +13,16 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class RegisterRequestDto implements Serializable{
+public class RegisterRequestDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@NotBlank(message = "fullName no debe estár vacío")
-	private String fullName;
-	@NotBlank(message = "email no debe estár vacío")
-	private String email;
-	@NotBlank(message = "auth no debe estár vacío")
-	private String auth;
-	@NotNull(message = "super no debe estár vacío")
-	private Boolean su;
+    private static final long serialVersionUID = 1L;
+    @NotBlank(message = "fullName no debe estár vacío")
+    private String fullName;
+    @NotBlank(message = "email no debe estár vacío")
+    private String email;
+    @NotBlank(message = "auth no debe estár vacío")
+    private String auth;
+    @NotNull(message = "super no debe estár vacío")
+    private Boolean su;
 
 }
