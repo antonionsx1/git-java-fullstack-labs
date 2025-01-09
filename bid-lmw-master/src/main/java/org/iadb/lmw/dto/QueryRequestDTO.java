@@ -19,6 +19,7 @@ public class QueryRequestDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+    
     private Boolean useDistinct;
     private Boolean usePagination;
     private Boolean useDates;
