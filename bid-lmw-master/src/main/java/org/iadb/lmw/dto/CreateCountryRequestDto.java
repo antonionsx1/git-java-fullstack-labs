@@ -22,9 +22,10 @@ public class CreateCountryRequestDto implements Serializable {
 
     @NotBlank(message = "nameEn no debe estár vacío")
     private String nameEn;
-    
+
     @NotBlank(message = "flag no debe estár vacío")
     private String flag;
+
     @NotBlank(message = "code no debe estár vacío")
     private String code;
     @NotBlank(message = "color no debe estár vacío")
