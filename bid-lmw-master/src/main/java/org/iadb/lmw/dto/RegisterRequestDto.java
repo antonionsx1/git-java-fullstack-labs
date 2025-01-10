@@ -25,6 +25,7 @@ public class RegisterRequestDto implements Serializable {
 
     @NotBlank(message = "email no debe estár vacío")
     private String email;
+
     @NotBlank(message = "auth no debe estár vacío")
     private String auth;
     @NotNull(message = "super no debe estár vacío")
