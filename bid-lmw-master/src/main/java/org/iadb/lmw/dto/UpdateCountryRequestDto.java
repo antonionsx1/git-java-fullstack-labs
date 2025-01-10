@@ -15,7 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class UpdateCountryRequestDto implements Serializable { 
+public class UpdateCountryRequestDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @NotNull(message = "id no debe estár vacío")

@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class JwtPayloadDto implements Serializable {
+public class JwtPayloadDto implements Serializable { 
 
     private static final long serialVersionUID = 1L;
     private Integer id;
