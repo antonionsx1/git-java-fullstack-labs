@@ -25,6 +25,7 @@ public class QueryRequestDTO implements Serializable {
     private Boolean usePagination;
 
     private Boolean useDates;
+
     private String startDate;
     private String endDate;
     private Integer pageOffset;

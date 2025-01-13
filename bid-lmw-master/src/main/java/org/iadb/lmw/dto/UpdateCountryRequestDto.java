@@ -21,7 +21,7 @@ public class UpdateCountryRequestDto implements Serializable {
 
     @NotNull(message = "id no debe estár vacío")
     private Integer id;
-    
+
     @NotBlank(message = "color no debe estár vacío")
     private String color;
 }
