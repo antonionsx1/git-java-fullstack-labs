@@ -23,6 +23,7 @@ public class QueryRequestDTO implements Serializable {
     private Boolean useDistinct;
 
     private Boolean usePagination;
+
     private Boolean useDates;
     private String startDate;
     private String endDate;
