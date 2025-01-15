@@ -25,6 +25,7 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nameEs;
     private String nameEn;
     @Column(columnDefinition = "TEXT")
