@@ -15,7 +15,9 @@ public class ViewAdminResponseDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
     private Integer id;
+    
     private String fullName;
     private String email;
     private String auth;
