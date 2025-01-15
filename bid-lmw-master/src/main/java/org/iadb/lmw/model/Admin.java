@@ -19,16 +19,17 @@ import lombok.ToString;
 @Entity
 public class Admin {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String fullName;
-	private String email;
-	private String auth;
-	private String profile;
-	private String password;
-	private String temporal;
-	private Date tempExp;
-	private Date regDate;
-	private Boolean status;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String fullName;
+    private String email;
+    private String auth;
+    private String profile;
+    private String password;
+    private String temporal;
+    private Date tempExp;
+    private Date regDate;
+    private Boolean status;
 }
