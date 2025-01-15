@@ -31,5 +31,5 @@ public class CreateCountryRequestDto implements Serializable {
 
     @NotBlank(message = "color no debe estár vacío")
     private String color;
-    
+
 }
