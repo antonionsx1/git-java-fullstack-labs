@@ -13,6 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UpdateCountryResponseDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String message;
+    private static final long serialVersionUID = 1L;
+    private String message;
+
 }
