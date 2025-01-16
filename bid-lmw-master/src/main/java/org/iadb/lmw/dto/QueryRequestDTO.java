@@ -31,6 +31,7 @@ public class QueryRequestDTO implements Serializable {
     private String endDate;
 
     private Integer pageOffset;
+
     private List<FilterDTO> filters;
 
 }
