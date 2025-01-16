@@ -12,11 +12,12 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class ViewIndicatorsTreeResponseDto implements Serializable{
+public class ViewIndicatorsTreeResponseDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String id;
-	private String name;
-	private List<ViewTreeResponseDTO> children;
+    private static final long serialVersionUID = 1L;
 	
+    private String id;
+    private String name;
+    private List<ViewTreeResponseDTO> children;
+
 }
