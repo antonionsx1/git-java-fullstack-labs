@@ -18,10 +18,11 @@ public class ViewCountryResponseDto implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String name;
+
     private String flag;
 
     private String code;
-    
+
     private String color;
 
 }
