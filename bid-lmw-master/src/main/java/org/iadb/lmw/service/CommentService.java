@@ -25,5 +25,4 @@ public interface CommentService {
 
     ReadCommentResponseDto readComment(ReadCommentsRequestDto request) throws FileNotFoundException;
 
-
 }

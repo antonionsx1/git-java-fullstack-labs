@@ -50,7 +50,6 @@ public class QueryBuilderServiceImplTest {
     @ParameterizedTest
     @MethodSource("columnsProvider")
     public void testCreateTable(List<String> columns) {
-
         result = queryBuilderService.createTable(tableName, columns);
 
         Assert.isTrue(result.contains(tableName), "Missing table name");
