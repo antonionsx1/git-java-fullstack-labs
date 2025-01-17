@@ -21,6 +21,7 @@ public class ViewCountryResponseDto implements Serializable {
     private String flag;
 
     private String code;
+    
     private String color;
 
 }
