@@ -28,5 +28,6 @@ public class Backup {
     private String author;
 
     private String comment;
+    
     private String type;
 }

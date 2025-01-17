@@ -27,6 +27,7 @@ public class Country {
     private Integer id;
 
     private String nameEs;
+
     private String nameEn;
     @Column(columnDefinition = "TEXT")
     private String flag;
