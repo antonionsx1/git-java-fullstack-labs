@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class FilterDTO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
     private String header;
     private List<String> conditions;

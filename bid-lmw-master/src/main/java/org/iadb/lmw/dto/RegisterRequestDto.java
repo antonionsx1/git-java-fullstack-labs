@@ -20,8 +20,9 @@ public class RegisterRequestDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotBlank(message = "fullName no debe estár vacío")
-    
+
     private String fullName;
+
     @NotBlank(message = "email no debe estár vacío")
     private String email;
     @NotBlank(message = "auth no debe estár vacío")
