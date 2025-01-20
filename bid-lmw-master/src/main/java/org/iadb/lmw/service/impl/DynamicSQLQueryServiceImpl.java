@@ -220,7 +220,6 @@ public class DynamicSQLQueryServiceImpl implements DynamicSQLQueryService {
                         CSVWriter writerCSV = null;
 
                         try {
-
                             List<FilterDTO> filters = query.getFilters();
 
                             int paramIdx = 1;

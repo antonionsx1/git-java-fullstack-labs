@@ -25,10 +25,11 @@ public class Header {
 	public String getDataBaseHeader() {
 		return dataBaseHeader;
 	}
-	
+
 	public void setDataBaseHeader(String dataBaseHeader) {
 		this.dataBaseHeader = dataBaseHeader;
 	}
+
 	public String getFrontEndHeader() {
 		return frontEndHeader;
 	}
