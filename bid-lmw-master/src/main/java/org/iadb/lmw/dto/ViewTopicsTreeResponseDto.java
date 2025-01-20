@@ -20,6 +20,7 @@ public class ViewTopicsTreeResponseDto implements Serializable {
     private String id;
 
 	private String name;
+
     private List<ViewIndicatorsTreeResponseDto> children;
 
 }
