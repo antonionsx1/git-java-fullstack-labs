@@ -28,6 +28,7 @@ public class Admin {
     private String email;
 
     private String auth;
+
     private String profile;
     private String password;
     private String temporal;
