@@ -25,6 +25,7 @@ public class ViewAdminResponseDto implements Serializable {
     private String auth;
 
     private String profile;
+    
     private Date regDate;
 
 }
