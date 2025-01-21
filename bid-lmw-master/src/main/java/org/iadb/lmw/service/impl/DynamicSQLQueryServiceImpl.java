@@ -65,8 +65,8 @@ public class DynamicSQLQueryServiceImpl implements DynamicSQLQueryService {
 
     @Override
     public boolean createTable(String tableName, List<String> columns) {
-        try {
 
+        try {
             jdbcTemplate.execute(queryBuilder.createTable(tableName, columns));
 
             return true;
