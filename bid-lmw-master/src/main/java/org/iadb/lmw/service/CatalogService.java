@@ -12,14 +12,14 @@ import org.iadb.lmw.dto.ViewTreeResponseDTO;
 
 public interface CatalogService {
 
-	CreateCountryResponseDto createCountry(CreateCountryRequestDto request);
+    CreateCountryResponseDto createCountry(CreateCountryRequestDto request);
 
-	UpdateCountryResponseDto updateCountry(UpdateCountryRequestDto request) throws FileNotFoundException;
+    UpdateCountryResponseDto updateCountry(UpdateCountryRequestDto request) throws FileNotFoundException;
 
-	List<ViewCountryResponseDto> viewAllCountries(String lang) throws FileNotFoundException;
+    List<ViewCountryResponseDto> viewAllCountries(String lang) throws FileNotFoundException;
 
-	ViewCountryResponseDto findCountry(String name, String lang) throws FileNotFoundException;
+    ViewCountryResponseDto findCountry(String name, String lang) throws FileNotFoundException;
 
-	List<ViewTreeResponseDTO> viewTree(String lang) throws FileNotFoundException;
+    List<ViewTreeResponseDTO> viewTree(String lang) throws FileNotFoundException;
 
 }
