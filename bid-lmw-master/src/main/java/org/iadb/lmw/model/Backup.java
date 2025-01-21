@@ -18,12 +18,12 @@ import lombok.ToString;
 @Entity
 public class Backup {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String fileName;
-	private LocalDateTime timeStamp;
-	private String author;
-	private String comment;
-	private String type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String fileName;
+    private LocalDateTime timeStamp;
+    private String author;
+    private String comment;
+    private String type;
 }
