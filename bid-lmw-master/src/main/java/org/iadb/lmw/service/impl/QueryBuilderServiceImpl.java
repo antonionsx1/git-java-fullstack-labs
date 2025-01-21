@@ -178,13 +178,13 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
         if (ids.isEmpty()) return "SELECT * FROM comment;";
 
-        String whereClause = "WHERE ";
+        StringBuilder whereClause = new StringBuilder("WHERE ");
 
         for (int i = 0; i < ids.size(); i++) {
-            whereClause += "id = ? OR ";
+            whereClause.append("id = ? OR ");
         }
 
-        whereClause = whereClause.substring(0, whereClause.length() - "OR ".length());
+        whereClause = new StringBuilder(whereClause.substring(0, whereClause.length() - "OR ".length()));
 
         return "SELECT * FROM comment " + whereClause + ";";
     }
