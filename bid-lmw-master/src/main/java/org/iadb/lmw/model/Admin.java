@@ -24,6 +24,7 @@ public class Admin {
     private Integer id;
 
     private String fullName;
+
     private String email;
     private String auth;
     private String profile;
