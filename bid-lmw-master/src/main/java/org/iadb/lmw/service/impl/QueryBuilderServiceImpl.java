@@ -196,7 +196,6 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
     @Override
     public String getTableColumns(String tableName) {
-
         return "SELECT column_name, data_type "
                 + "FROM information_schema.columns "
                 + "WHERE table_name = ?;";

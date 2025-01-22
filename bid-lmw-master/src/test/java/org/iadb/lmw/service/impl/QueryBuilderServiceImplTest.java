@@ -75,7 +75,6 @@ public class QueryBuilderServiceImplTest {
     @MethodSource("columnsAndValuesListsProvider")
     public void testInsertValuesIntoTable(List<String> columns, List<CSVRecord> values) {
         result = queryBuilderService.insertValuesIntoTable(tableName, columns, values);
-
         Assert.isTrue(result.contains(tableName), "Missing table name");
 
         if (columns.isEmpty())
