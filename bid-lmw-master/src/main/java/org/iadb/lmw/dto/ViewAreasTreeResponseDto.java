@@ -23,7 +23,7 @@ public class ViewAreasTreeResponseDto implements Serializable {
     private String id;
 
     private String name;
-    
+
     private List<ViewTopicsTreeResponseDto> children;
 
 }
