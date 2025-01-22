@@ -22,201 +22,201 @@ import org.springframework.util.Assert;
 
 @SpringBootTest
 public class QueryBuilderServiceImplTest {
-	
-	@Autowired
-	private QueryBuilderService queryBuilderService;
-	
-	private static String tableName;
-	private String result;
-	private static List<String> _columns;
-	
-	@BeforeAll
-	static void setUp() throws Exception {
-		
-		tableName = "latinmacrowatch";
-		_columns = new ArrayList<String>();
-		
-		_columns.add("col1");
-		_columns.add("col2");
-	}
 
-	@Test
-	public void testTableExists() {
-		
-		result = queryBuilderService.tableExists();
-		
-		Assert.hasText(result, "The query was not generated correctly");
-	}
+    @Autowired
+    private QueryBuilderService queryBuilderService;
 
-	@ParameterizedTest
-	@MethodSource("columnsProvider") 
-	public void testCreateTable(List<String> columns) {
-		
-		result = queryBuilderService.createTable(tableName, columns);
-		
-		Assert.isTrue(result.contains(tableName), "Missing table name");
-		
-		if(columns.isEmpty())
-			return;
-		
-		for (String column : columns) {
-			Assert.isTrue(result.contains(column), "Missing column");
-		}
-			
-	}
-	
-	static Stream<List<String>> columnsProvider() {
-		
-		return Stream.of(new ArrayList<String>(), _columns);
-	}
-	
-	@Test
-	public void testDeleteTable() {
-		
-		result = queryBuilderService.deleteTable(tableName);
-		
-		Assert.isTrue(result.contains(tableName), "Missing table name");
-	}
+    private static String tableName;
+    private String result;
+    private static List<String> _columns;
 
-	@ParameterizedTest
-	@MethodSource("columnsAndValuesListsProvider")
-	public void testInsertValuesIntoTable(List<String> columns, List<CSVRecord> values) {
+    @BeforeAll
+    static void setUp() throws Exception {
 
-		result = queryBuilderService.insertValuesIntoTable(tableName, columns, values);
-		
-		Assert.isTrue(result.contains(tableName), "Missing table name");
+        tableName = "latinmacrowatch";
+        _columns = new ArrayList<String>();
 
-		if(columns.isEmpty())
-			return;
-		
-		for (String column : columns) {
-			Assert.isTrue(result.contains(column), "Missing column");
-		}
-	}
-	
-	static Stream<Arguments> columnsAndValuesListsProvider(){
-		
-		return Stream.of(
-				Arguments.of(new ArrayList<String>(), new ArrayList<CSVRecord>()),
-				Arguments.of(_columns, new ArrayList<CSVRecord>())
-				);
-	}
+        _columns.add("col1");
+        _columns.add("col2");
+    }
 
-	@ParameterizedTest
-	@MethodSource("langQueryProvider")
-	public void testGetLMWTableColumns(LangRequestDto query) {
-		
-		result = queryBuilderService.getLMWTableColumns(query);
-		
-		Assert.hasText(result, "Bad request");
-	}
-	
-	static Stream<LangRequestDto> langQueryProvider() {
-		
-		return Stream.of(
-				new LangRequestDto(false, ""),
-				new LangRequestDto(true, "es"),
-				new LangRequestDto(true, "en")
-				);
-	}
+    @Test
+    public void testTableExists() {
 
-	@ParameterizedTest
-	@MethodSource("dynamicQueryProvider")
-	public void testPrepareDynamicQuery(QueryRequestDTO query) {
+        result = queryBuilderService.tableExists();
 
-		result = queryBuilderService.prepareDynamicQuery(query, tableName);
-		
-		Assert.hasText(result, "Bad request");
-	}
-	
-	static Stream<QueryRequestDTO> dynamicQueryProvider(){
-		
-		List<FilterDTO> filtersEmptyConditions = new ArrayList<FilterDTO>();
-		List<FilterDTO> filters = new ArrayList<FilterDTO>();
-		List<String> conditions = new ArrayList<String>();
-		
-		filtersEmptyConditions.add(new FilterDTO("header", new ArrayList<String>()));
-		
-		conditions.add("value");
-		
-		filters.add(new FilterDTO("header", conditions));
-		
-		return Stream.of(
-				new QueryRequestDTO(false, false, false, "", "", 0, new ArrayList<FilterDTO>()),
-				new QueryRequestDTO(true, false, false, "", "", 0, new ArrayList<FilterDTO>()),
-				new QueryRequestDTO(false, true, false, "date1", "date2", 0, new ArrayList<FilterDTO>()),
-				new QueryRequestDTO(false, false, true, "", "", 0, new ArrayList<FilterDTO>()),
-				new QueryRequestDTO(false, false, false, "", "", 0, new ArrayList<FilterDTO>()),
-				new QueryRequestDTO(false, false, false, "", "", 0, filtersEmptyConditions),
-				new QueryRequestDTO(false, false, true, "", "", 0, filtersEmptyConditions),
-				new QueryRequestDTO(false, false, false, "", "", 0, filters)
-				);
-	}
+        Assert.hasText(result, "The query was not generated correctly");
+    }
 
-	@ParameterizedTest
-	@EmptySource
-	@MethodSource("longIdsProvider")
-	public void testDownloadCommentsFile(List<Long> ids) {
+    @ParameterizedTest
+    @MethodSource("columnsProvider")
+    public void testCreateTable(List<String> columns) {
 
-		result = queryBuilderService.downloadCommentsFile(ids);
-		
-		if(ids.isEmpty()) {
-			Assert.isTrue(result.contains("comment;"), "Missing table name");
-		}else {
-			Assert.isTrue(StringUtils.countMatches(result, '?') == ids.size(), "Missing parameters in query");
-		}
-		
-	}
-	
-	static Stream<List<Long>> longIdsProvider(){
-		
-		List<Long> ids = new ArrayList<>();
-		
-		ids.add(1L);
-		ids.add(2L);
-		
-		return Stream.of( ids );
-	}
+        result = queryBuilderService.createTable(tableName, columns);
 
-	@Test
-	public void testTotalRowCount() {
-		
-		result = queryBuilderService.totalRowCount(tableName);
-		
-		Assert.hasText(result, "Missing table name");
-	}
+        Assert.isTrue(result.contains(tableName), "Missing table name");
 
-	@Test
-	public void testGetTableColumns() {
-		
-		result = queryBuilderService.getTableColumns(tableName);
-		
-		Assert.hasText(result, "Missing table name");
-	}
+        if (columns.isEmpty())
+            return;
 
-	@Test
-	public void testStartDate() {
+        for (String column : columns) {
+            Assert.isTrue(result.contains(column), "Missing column");
+        }
 
-		result = queryBuilderService.startDate(tableName);
-		
-		Assert.hasText(result, "Missing table name");
-	}
+    }
 
-	@Test
-	public void testEndDate() {
-		
-		result = queryBuilderService.endDate(tableName);
-		
-		Assert.hasText(result, "Missing table name");
-	}
+    static Stream<List<String>> columnsProvider() {
 
-	@ParameterizedTest
-	@MethodSource("dynamicQueryProvider")
-	public void testCountRowsDynamicQuery(QueryRequestDTO query) {
-		
-		result = queryBuilderService.countRowsDynamicQuery(query, tableName);
-		
-		Assert.hasText(result, "Missing table name");
-	}
+        return Stream.of(new ArrayList<String>(), _columns);
+    }
+
+    @Test
+    public void testDeleteTable() {
+
+        result = queryBuilderService.deleteTable(tableName);
+
+        Assert.isTrue(result.contains(tableName), "Missing table name");
+    }
+
+    @ParameterizedTest
+    @MethodSource("columnsAndValuesListsProvider")
+    public void testInsertValuesIntoTable(List<String> columns, List<CSVRecord> values) {
+
+        result = queryBuilderService.insertValuesIntoTable(tableName, columns, values);
+
+        Assert.isTrue(result.contains(tableName), "Missing table name");
+
+        if (columns.isEmpty())
+            return;
+
+        for (String column : columns) {
+            Assert.isTrue(result.contains(column), "Missing column");
+        }
+    }
+
+    static Stream<Arguments> columnsAndValuesListsProvider() {
+
+        return Stream.of(
+                Arguments.of(new ArrayList<String>(), new ArrayList<CSVRecord>()),
+                Arguments.of(_columns, new ArrayList<CSVRecord>())
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("langQueryProvider")
+    public void testGetLMWTableColumns(LangRequestDto query) {
+
+        result = queryBuilderService.getLMWTableColumns(query);
+
+        Assert.hasText(result, "Bad request");
+    }
+
+    static Stream<LangRequestDto> langQueryProvider() {
+
+        return Stream.of(
+                new LangRequestDto(false, ""),
+                new LangRequestDto(true, "es"),
+                new LangRequestDto(true, "en")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("dynamicQueryProvider")
+    public void testPrepareDynamicQuery(QueryRequestDTO query) {
+
+        result = queryBuilderService.prepareDynamicQuery(query, tableName);
+
+        Assert.hasText(result, "Bad request");
+    }
+
+    static Stream<QueryRequestDTO> dynamicQueryProvider() {
+
+        List<FilterDTO> filtersEmptyConditions = new ArrayList<FilterDTO>();
+        List<FilterDTO> filters = new ArrayList<FilterDTO>();
+        List<String> conditions = new ArrayList<String>();
+
+        filtersEmptyConditions.add(new FilterDTO("header", new ArrayList<String>()));
+
+        conditions.add("value");
+
+        filters.add(new FilterDTO("header", conditions));
+
+        return Stream.of(
+                new QueryRequestDTO(false, false, false, "", "", 0, new ArrayList<FilterDTO>()),
+                new QueryRequestDTO(true, false, false, "", "", 0, new ArrayList<FilterDTO>()),
+                new QueryRequestDTO(false, true, false, "date1", "date2", 0, new ArrayList<FilterDTO>()),
+                new QueryRequestDTO(false, false, true, "", "", 0, new ArrayList<FilterDTO>()),
+                new QueryRequestDTO(false, false, false, "", "", 0, new ArrayList<FilterDTO>()),
+                new QueryRequestDTO(false, false, false, "", "", 0, filtersEmptyConditions),
+                new QueryRequestDTO(false, false, true, "", "", 0, filtersEmptyConditions),
+                new QueryRequestDTO(false, false, false, "", "", 0, filters)
+        );
+    }
+
+    @ParameterizedTest
+    @EmptySource
+    @MethodSource("longIdsProvider")
+    public void testDownloadCommentsFile(List<Long> ids) {
+
+        result = queryBuilderService.downloadCommentsFile(ids);
+
+        if (ids.isEmpty()) {
+            Assert.isTrue(result.contains("comment;"), "Missing table name");
+        } else {
+            Assert.isTrue(StringUtils.countMatches(result, '?') == ids.size(), "Missing parameters in query");
+        }
+
+    }
+
+    static Stream<List<Long>> longIdsProvider() {
+
+        List<Long> ids = new ArrayList<>();
+
+        ids.add(1L);
+        ids.add(2L);
+
+        return Stream.of(ids);
+    }
+
+    @Test
+    public void testTotalRowCount() {
+
+        result = queryBuilderService.totalRowCount(tableName);
+
+        Assert.hasText(result, "Missing table name");
+    }
+
+    @Test
+    public void testGetTableColumns() {
+
+        result = queryBuilderService.getTableColumns(tableName);
+
+        Assert.hasText(result, "Missing table name");
+    }
+
+    @Test
+    public void testStartDate() {
+
+        result = queryBuilderService.startDate(tableName);
+
+        Assert.hasText(result, "Missing table name");
+    }
+
+    @Test
+    public void testEndDate() {
+
+        result = queryBuilderService.endDate(tableName);
+
+        Assert.hasText(result, "Missing table name");
+    }
+
+    @ParameterizedTest
+    @MethodSource("dynamicQueryProvider")
+    public void testCountRowsDynamicQuery(QueryRequestDTO query) {
+
+        result = queryBuilderService.countRowsDynamicQuery(query, tableName);
+
+        Assert.hasText(result, "Missing table name");
+    }
 
 }

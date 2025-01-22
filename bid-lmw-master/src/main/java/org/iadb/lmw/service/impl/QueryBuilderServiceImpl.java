@@ -103,7 +103,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
         List<String> columnsNames = new ArrayList<>();
         List<FilterDTO> filters = query.getFilters();
-        String columnsClause = "";
+        String columnsClause;
         String whereClause = " WHERE ";
         String selectClause = "SELECT ";
         String betweenClause = query.getUseDates() ?
