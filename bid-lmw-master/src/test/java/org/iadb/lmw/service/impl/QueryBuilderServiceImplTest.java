@@ -86,7 +86,6 @@ public class QueryBuilderServiceImplTest {
     }
 
     static Stream<Arguments> columnsAndValuesListsProvider() {
-
         return Stream.of(
                 Arguments.of(new ArrayList<String>(), new ArrayList<CSVRecord>()),
                 Arguments.of(_columns, new ArrayList<CSVRecord>())
