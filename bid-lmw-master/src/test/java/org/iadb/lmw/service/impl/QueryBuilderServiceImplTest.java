@@ -167,7 +167,6 @@ public class QueryBuilderServiceImplTest {
     @Test
     public void testTotalRowCount() {
         result = queryBuilderService.totalRowCount(tableName);
-
         Assert.hasText(result, "Missing table name");
     }
 
