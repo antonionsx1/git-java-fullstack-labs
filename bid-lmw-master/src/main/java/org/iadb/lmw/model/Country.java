@@ -29,6 +29,7 @@ public class Country {
     private String nameEs;
 
     private String nameEn;
+
     @Column(columnDefinition = "TEXT")
     private String flag;
     private String color;

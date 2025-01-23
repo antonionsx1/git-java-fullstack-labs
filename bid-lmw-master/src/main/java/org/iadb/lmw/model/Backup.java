@@ -21,6 +21,7 @@ public class Backup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String fileName;
 
     private LocalDateTime timeStamp;
@@ -28,6 +29,6 @@ public class Backup {
     private String author;
 
     private String comment;
-    
+
     private String type;
 }
