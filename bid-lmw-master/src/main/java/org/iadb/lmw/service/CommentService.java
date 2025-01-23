@@ -13,18 +13,17 @@ import org.iadb.lmw.dto.ReadCommentResponseDto;
 import org.iadb.lmw.dto.ReadCommentsRequestDto;
 import org.iadb.lmw.dto.ViewCommentResponseDto;
 
-
 public interface CommentService {
 
-	List<ViewCommentResponseDto> viewAllComments();
+    List<ViewCommentResponseDto> viewAllComments();
 
-	CreateCommentResponseDto createComment(CreateCommentRequestDto request);
+    CreateCommentResponseDto createComment(CreateCommentRequestDto request);
 
-	DeleteCommentResponseDto deleteComment(DeleteCommentsRequestDto request) throws FileNotFoundException;
+    DeleteCommentResponseDto deleteComment(DeleteCommentsRequestDto request) throws FileNotFoundException;
 
-	CommentsFileResponseDto downloadCommentsFile(DownloadCommentsRequestDto request);
+    CommentsFileResponseDto downloadCommentsFile(DownloadCommentsRequestDto request);
 
-	ReadCommentResponseDto readComment(ReadCommentsRequestDto request) throws FileNotFoundException;
+    ReadCommentResponseDto readComment(ReadCommentsRequestDto request) throws FileNotFoundException;
 
-	
+
 }

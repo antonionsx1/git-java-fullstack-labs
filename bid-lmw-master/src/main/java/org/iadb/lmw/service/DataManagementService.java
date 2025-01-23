@@ -18,19 +18,32 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface DataManagementService {
 
-	SingleResponse<SummaryDTO> verify(MultipartFile file, String path, String filePrefix, String fileExt) throws UnsupportedEncodingException, IOException;
-	SingleResponse<SummaryDTO> replaceDataset(String path, ReplaceDatasetRequestDto request, int authorId, String ext, String tableName, String schema, String prefix);
-	String saveFile(MultipartFile file, String path, String filePrefix, String fileExt);
-	SingleResponse<SummaryDTO> updateDataset(String path, ReplaceDatasetRequestDto request, int authorId, String ext, String tableName, String schema, String prefix);
-	SingleResponse<SummaryDTO> getStoredHeaders(LangRequestDto query);
-	SingleResponse<SummaryDTO> getDataForVisualization(QueryRequestDTO query, String tableName);
-	SingleResponse<DatasetFileResponseDTO> downloadCSV(QueryRequestDTO query, String tableName, String downloadPath, String prefix, String ext);
-	boolean generateBackup(String tableName, String path, String prefix, String ext, LocalDateTime timeStamp, String author, String comment, String type);
-	List<Backup> listBackups();
-	SingleResponse<SummaryDTO> restoreFromBackupById(Long id, int authorId, String ext, String tableName, String schema, String prefix);
-	boolean deleteFile(String path, String fileName, String ext);
-	void deleteAllFilesIn(String path);
-	SingleResponse<DatasetFileResponseDTO> downloadBackup(Long id);
-	SingleResponse<DatesResponseDto> getStoredDates(String tableName);
-	
+    SingleResponse<SummaryDTO> verify(MultipartFile file, String path, String filePrefix, String fileExt) throws UnsupportedEncodingException, IOException;
+
+    SingleResponse<SummaryDTO> replaceDataset(String path, ReplaceDatasetRequestDto request, int authorId, String ext, String tableName, String schema, String prefix);
+
+    String saveFile(MultipartFile file, String path, String filePrefix, String fileExt);
+
+    SingleResponse<SummaryDTO> updateDataset(String path, ReplaceDatasetRequestDto request, int authorId, String ext, String tableName, String schema, String prefix);
+
+    SingleResponse<SummaryDTO> getStoredHeaders(LangRequestDto query);
+
+    SingleResponse<SummaryDTO> getDataForVisualization(QueryRequestDTO query, String tableName);
+
+    SingleResponse<DatasetFileResponseDTO> downloadCSV(QueryRequestDTO query, String tableName, String downloadPath, String prefix, String ext);
+
+    boolean generateBackup(String tableName, String path, String prefix, String ext, LocalDateTime timeStamp, String author, String comment, String type);
+
+    List<Backup> listBackups();
+
+    SingleResponse<SummaryDTO> restoreFromBackupById(Long id, int authorId, String ext, String tableName, String schema, String prefix);
+
+    boolean deleteFile(String path, String fileName, String ext);
+
+    void deleteAllFilesIn(String path);
+
+    SingleResponse<DatasetFileResponseDTO> downloadBackup(Long id);
+
+    SingleResponse<DatesResponseDto> getStoredDates(String tableName);
+
 }
