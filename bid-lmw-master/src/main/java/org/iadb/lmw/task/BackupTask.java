@@ -22,7 +22,8 @@ public class BackupTask {
     DatasetBackupDao backupDao;
     @Autowired
     DataManagementService dataManagementService;
-    @Value("${data.dataset.backup-path}")
+
+	@Value("${data.dataset.backup-path}")
     private String backupPath;
     @Value("${data.dataset.ext}")
     private String ext;
