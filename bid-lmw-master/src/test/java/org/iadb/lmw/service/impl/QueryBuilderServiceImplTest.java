@@ -179,7 +179,6 @@ public class QueryBuilderServiceImplTest {
 
     @Test
     public void testStartDate() {
-
         result = queryBuilderService.startDate(tableName);
 
         Assert.hasText(result, "Missing table name");
