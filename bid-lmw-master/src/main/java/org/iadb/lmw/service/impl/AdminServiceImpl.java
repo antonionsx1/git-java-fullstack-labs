@@ -96,7 +96,6 @@ public class AdminServiceImpl implements AdminService {
             throw new AuthenticationException("Correo ya registrado");
         }
 
-
         String body = "";
 
         if (lang.equals("es")) {

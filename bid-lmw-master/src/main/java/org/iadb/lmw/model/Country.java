@@ -34,6 +34,7 @@ public class Country {
     private String flag;
 
     private String color;
+    
     private String code;
     private Date regDate;
     private Boolean status;
