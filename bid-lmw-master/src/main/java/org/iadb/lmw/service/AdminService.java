@@ -18,20 +18,20 @@ import org.iadb.lmw.model.Admin;
 
 public interface AdminService {
 
-	LoginResponseDto login(LoginRequestDto request) throws AuthenticationException;
+    LoginResponseDto login(LoginRequestDto request) throws AuthenticationException;
 
-	GenerateResponseDto generatePassword(GenerateRequestDto request);
+    GenerateResponseDto generatePassword(GenerateRequestDto request);
 
-	List<ViewAdminResponseDto> viewAll() throws AuthenticationException;
+    List<ViewAdminResponseDto> viewAll() throws AuthenticationException;
 
-	DeleteAdminResponseDto delete(Integer id);
-	
-	Admin findById(Integer id);
+    DeleteAdminResponseDto delete(Integer id);
 
-	RegisterResponseDto register(RegisterRequestDto request, String lang)
-			throws IllegalArgumentException, AuthenticationException;
+    Admin findById(Integer id);
 
-	RecoverPassResponseDto recoverPassword(RecoverPasswordDto request, String lang)
-			throws IllegalArgumentException, AuthenticationException;
+    RegisterResponseDto register(RegisterRequestDto request, String lang)
+            throws IllegalArgumentException, AuthenticationException;
+
+    RecoverPassResponseDto recoverPassword(RecoverPasswordDto request, String lang)
+            throws IllegalArgumentException, AuthenticationException;
 
 }

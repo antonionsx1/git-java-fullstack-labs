@@ -42,7 +42,6 @@ public class QueryBuilderServiceImplTest {
 
     @Test
     public void testTableExists() {
-
         result = queryBuilderService.tableExists();
 
         Assert.hasText(result, "The query was not generated correctly");
