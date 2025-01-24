@@ -68,7 +68,6 @@ public class QueryBuilderServiceImplTest {
     @Test
     public void testDeleteTable() {
         result = queryBuilderService.deleteTable(tableName);
-
         Assert.isTrue(result.contains(tableName), "Missing table name");
     }
 

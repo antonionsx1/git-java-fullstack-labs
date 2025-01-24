@@ -104,7 +104,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
         List<String> columnsNames = new ArrayList<>();
         List<FilterDTO> filters = query.getFilters();
         String columnsClause;
-        String whereClause = " WHERE ";
+        StringBuilder whereClause = new StringBuilder(" WHERE ");
         String selectClause = "SELECT ";
         String betweenClause = query.getUseDates() ?
                 "(" + datesCol + " BETWEEN '" + query.getStartDate() + "' AND '" + query.getEndDate() + "')" :
@@ -137,18 +137,18 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
             if (conditions.isEmpty()) continue;
 
-            whereClause += "( ";
+            whereClause.append("( ");
 
             for (int i = 0; i < conditions.size(); i++) {
-                whereClause += column + " = ? OR ";
+                whereClause.append(column).append(" = ? OR ");
             }
 
-            whereClause = whereClause.substring(0, whereClause.length() - "OR ".length()) + ") AND ";
+            whereClause = new StringBuilder(whereClause.substring(0, whereClause.length() - "OR ".length()) + ") AND ");
         }
 
-        if (!whereClause.equals(" WHERE ")) {
+        if (!whereClause.toString().equals(" WHERE ")) {
 
-            whereClause = whereClause.substring(0, whereClause.length() - "AND ".length());
+            whereClause = new StringBuilder(whereClause.substring(0, whereClause.length() - "AND ".length()));
 
             if (query.getUseDates()) {
                 betweenClause = " AND " + betweenClause;
@@ -158,7 +158,7 @@ public class QueryBuilderServiceImpl implements QueryBuilderService {
 
         } else {
             if (!query.getUseDates())
-                whereClause = "";
+                whereClause = new StringBuilder();
             betweenClause = "";
         }
 
