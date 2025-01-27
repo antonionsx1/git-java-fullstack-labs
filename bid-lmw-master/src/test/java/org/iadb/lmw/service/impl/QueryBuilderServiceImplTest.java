@@ -51,7 +51,6 @@ public class QueryBuilderServiceImplTest {
     @MethodSource("columnsProvider")
     public void testCreateTable(List<String> columns) {
         result = queryBuilderService.createTable(tableName, columns);
-
         Assert.isTrue(result.contains(tableName), "Missing table name");
 
         if (columns.isEmpty())
@@ -60,7 +59,6 @@ public class QueryBuilderServiceImplTest {
         for (String column : columns) {
             Assert.isTrue(result.contains(column), "Missing column");
         }
-
     }
 
     static Stream<List<String>> columnsProvider() {
