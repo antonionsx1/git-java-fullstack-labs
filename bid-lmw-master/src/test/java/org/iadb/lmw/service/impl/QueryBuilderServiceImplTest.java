@@ -110,7 +110,6 @@ public class QueryBuilderServiceImplTest {
     @ParameterizedTest
     @MethodSource("dynamicQueryProvider")
     public void testPrepareDynamicQuery(QueryRequestDTO query) {
-
         result = queryBuilderService.prepareDynamicQuery(query, tableName);
 
         Assert.hasText(result, "Bad request");
