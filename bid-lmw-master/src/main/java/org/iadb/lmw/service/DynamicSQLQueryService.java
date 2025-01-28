@@ -34,4 +34,5 @@ public interface DynamicSQLQueryService {
     String getEndDate(String tableName);
 
     int countDynamicQueryRows(QueryRequestDTO query, String tableName);
+
 }
