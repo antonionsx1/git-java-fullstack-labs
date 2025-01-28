@@ -32,6 +32,7 @@ public class Country {
 
     @Column(columnDefinition = "TEXT")
     private String flag;
+
     private String color;
     private String code;
     private Date regDate;
