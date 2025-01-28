@@ -100,7 +100,6 @@ public class QueryBuilderServiceImplTest {
     }
 
     static Stream<LangRequestDto> langQueryProvider() {
-
         return Stream.of(
                 new LangRequestDto(false, ""),
                 new LangRequestDto(true, "es"),
