@@ -36,6 +36,7 @@ public class Admin {
     private String temporal;
 
     private Date tempExp;
+    
     private Date regDate;
     private Boolean status;
 }

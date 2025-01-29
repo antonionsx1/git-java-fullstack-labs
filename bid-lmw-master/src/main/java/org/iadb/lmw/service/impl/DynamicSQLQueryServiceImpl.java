@@ -272,7 +272,6 @@ public class DynamicSQLQueryServiceImpl implements DynamicSQLQueryService {
                                 }
                             }
                         }
-
                         return true;
                     }
                 });
