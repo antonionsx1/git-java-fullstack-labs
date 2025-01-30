@@ -47,7 +47,6 @@ public class BackupTask {
 
             backupDao.deleteById(backup.getId());
             dataManagementService.deleteFile(backupPath, backup.getFileName(), ext);
-
         }
 
         log.info("Scheduled Task Delete Old Backups: Finished");

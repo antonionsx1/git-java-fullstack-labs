@@ -18,7 +18,8 @@ public class TemporalFilesTask {
 
     @Value("${data.dataset.download-path}")
     private String downloadPath;
-    @Value("${data.dataset.path}")
+
+	@Value("${data.dataset.path}")
     private String path;
 
     @Scheduled(cron = "0 0 3 * * *")////Everyday at 3 o'clock
