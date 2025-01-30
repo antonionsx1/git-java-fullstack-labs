@@ -62,13 +62,11 @@ public class QueryBuilderServiceImplTest {
     }
 
     static Stream<List<String>> columnsProvider() {
-
         return Stream.of(new ArrayList<String>(), _columns);
     }
 
     @Test
     public void testDeleteTable() {
-
         result = queryBuilderService.deleteTable(tableName);
 
         Assert.isTrue(result.contains(tableName), "Missing table name");
