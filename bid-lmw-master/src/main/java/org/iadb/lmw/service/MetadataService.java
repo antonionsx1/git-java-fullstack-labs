@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface MetadataService {
 
-	Resource loadFileAsResource(String fileName) throws IOException;
+    Resource loadFileAsResource(String fileName) throws IOException;
 
-	String storeFile(MultipartFile file) throws IOException;
+    String storeFile(MultipartFile file) throws IOException;
 
 }

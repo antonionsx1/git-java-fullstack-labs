@@ -96,7 +96,6 @@ public class QueryBuilderServiceImplTest {
     @MethodSource("langQueryProvider")
     public void testGetLMWTableColumns(LangRequestDto query) {
         result = queryBuilderService.getLMWTableColumns(query);
-
         Assert.hasText(result, "Bad request");
     }
 
