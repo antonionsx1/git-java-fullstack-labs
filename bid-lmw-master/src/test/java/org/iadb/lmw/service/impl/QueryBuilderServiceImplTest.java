@@ -172,7 +172,6 @@ public class QueryBuilderServiceImplTest {
 
     @Test
     public void testGetTableColumns() {
-
         result = queryBuilderService.getTableColumns(tableName);
 
         Assert.hasText(result, "Missing table name");
