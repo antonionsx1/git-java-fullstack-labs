@@ -141,6 +141,11 @@ public class CommentServiceImpl implements CommentService {
         return new DeleteCommentResponseDto("Comentarios eliminados con éxito");
     }
 
+    /**
+     * 
+     * @param request
+     * @return
+     */
     @Override
     public CommentsFileResponseDto downloadCommentsFile(DownloadCommentsRequestDto request) {
         log.info("Descargar archivo de comentarios");

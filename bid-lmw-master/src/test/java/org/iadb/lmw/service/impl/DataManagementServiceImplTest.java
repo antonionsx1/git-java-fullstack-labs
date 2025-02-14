@@ -82,7 +82,7 @@ public class DataManagementServiceImplTest {
     };
 
 	/**
-	 * 
+	 *
 	 */
     @BeforeAll
     public static void initAll() {
@@ -90,6 +90,9 @@ public class DataManagementServiceImplTest {
         schema = "public";
     }
 
+	/**
+	 *
+	 */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
