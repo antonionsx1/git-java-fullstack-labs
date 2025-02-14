@@ -117,7 +117,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 
+     *
      * @param request
      * @return
      * @throws FileNotFoundException
@@ -139,7 +139,6 @@ public class CommentServiceImpl implements CommentService {
         }
 
         return new DeleteCommentResponseDto("Comentarios eliminados con éxito");
-
     }
 
     @Override

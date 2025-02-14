@@ -81,6 +81,9 @@ public class DataManagementServiceImplTest {
             "lmwUUID,Es_01_Área,En_01_Area\r\n"
     };
 
+	/**
+	 * 
+	 */
     @BeforeAll
     public static void initAll() {
         tableName = "latinmacrowatch";
