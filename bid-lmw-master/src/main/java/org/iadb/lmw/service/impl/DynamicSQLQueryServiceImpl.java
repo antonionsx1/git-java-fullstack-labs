@@ -44,17 +44,17 @@ public class DynamicSQLQueryServiceImpl implements DynamicSQLQueryService {
     public boolean tableExists(String tableName, String schemaName) {
         log.info("Comprobar existencia de la tabla");
         return Boolean.TRUE.equals(jdbcTemplate.execute(queryBuilder.tableExists(), new PreparedStatementCallback<Boolean>() {
-			@Override
-			public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
-				ps.setString(1, schemaName);
-				ps.setString(2, tableName);
+            @Override
+            public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                ps.setString(1, schemaName);
+                ps.setString(2, tableName);
 
-				ResultSet resultSet = ps.executeQuery();
-				resultSet.next();
+                ResultSet resultSet = ps.executeQuery();
+                resultSet.next();
 
-				return resultSet.getBoolean("exists");
-			}
-		}));
+                return resultSet.getBoolean("exists");
+            }
+        }));
     }
 
     @Override

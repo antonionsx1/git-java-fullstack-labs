@@ -20,15 +20,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MetadataServiceImpl implements MetadataService {
-	private static final Logger log = LoggerFactory.getLogger(MetadataServiceImpl.class);
-	private final Path fileStorageLocation;
-	private final String fileName;
-	
-	@Autowired
+    private static final Logger log = LoggerFactory.getLogger(MetadataServiceImpl.class);
+    private final Path fileStorageLocation;
+    private final String fileName;
+
+    @Autowired
     public MetadataServiceImpl(MetadataConfig fileStorageProperties) throws IOException {
-		
+
         this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
-            .toAbsolutePath().normalize();
+                .toAbsolutePath().normalize();
         this.fileName = fileStorageProperties.getFileName();
 
         try {
@@ -38,9 +38,9 @@ public class MetadataServiceImpl implements MetadataService {
         }
     }
 
-	@Override
+    @Override
     public String storeFile(MultipartFile file) throws IOException {
-		log.info("Gardado de archivo");
+        log.info("Gardado de archivo");
 
         try {
             // Check if the file's name contains invalid characters
@@ -60,7 +60,7 @@ public class MetadataServiceImpl implements MetadataService {
 
     @Override
     public Resource loadFileAsResource(String fileName) throws IOException {
-    	log.info("Carga de archivo");
+        log.info("Carga de archivo");
         try {
             Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
             Resource resource = new UrlResource(filePath.toUri());
