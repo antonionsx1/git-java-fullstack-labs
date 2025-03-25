@@ -13,4 +13,5 @@ public interface CountryDao extends CrudRepository<Country, Integer> {
     List<Country> findByNameEs(String nameEs);
 
     List<Country> findByNameEn(String nameEn);
+
 }
