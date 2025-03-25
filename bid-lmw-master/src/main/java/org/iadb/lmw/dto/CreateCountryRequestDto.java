@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.validation.constraints.NotBlank;
@@ -16,6 +17,7 @@ import lombok.ToString;
 @ToString
 public class CreateCountryRequestDto implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @NotBlank(message = "nameEs no debe estár vacío")
