@@ -10,6 +10,11 @@ public interface CountryDao extends CrudRepository<Country, Integer> {
     // --- Métodos de búsqueda existentes ---
     List<Country> findAll();
 
+    /**
+     * 
+     * @param nameEs
+     * @return
+     */
     List<Country> findByNameEs(String nameEs);
 
     List<Country> findByNameEn(String nameEn);
