@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DatasetFileResponseDTO {
 
-	private String name;
-	private InputStreamResource file;
+    private String name;
+    private InputStreamResource file;
+	
 }
