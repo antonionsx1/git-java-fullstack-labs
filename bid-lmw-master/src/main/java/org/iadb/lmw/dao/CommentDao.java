@@ -9,10 +9,15 @@ import org.springframework.data.repository.CrudRepository;
 public interface CommentDao extends CrudRepository<Comment, Long> {
 
     /**
-     * 
+     *
      * @return
      */
     List<Comment> findAll();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     Optional<Comment> findById(Long id);
 }

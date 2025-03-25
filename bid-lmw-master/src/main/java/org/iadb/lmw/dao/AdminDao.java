@@ -8,6 +8,11 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AdminDao extends CrudRepository<Admin, Integer>{
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	Optional<Admin> findById(Integer id);
 	
 	List<Admin> findAll();
