@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ public class CreateCommentResponseDto implements Serializable {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
     private String message;
 

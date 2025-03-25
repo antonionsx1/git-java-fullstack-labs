@@ -17,6 +17,7 @@ import lombok.ToString;
 public class CreateCountryRequestDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @NotBlank(message = "nameEs no debe estár vacío")
     private String nameEs;
 
