@@ -10,8 +10,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CommentsFileResponseDto {
-	
-	private InputStreamResource file;
-	private String name;
-	
+
+    private InputStreamResource file;
+
+    private String name;
+
 }
