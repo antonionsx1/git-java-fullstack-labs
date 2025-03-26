@@ -13,10 +13,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class LangRequestDto implements Serializable{
+public class LangRequestDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private Boolean useLang;
-	private String lang;
+    private static final long serialVersionUID = 1L;
+    private Boolean useLang;
+    private String lang;
 	
 }
