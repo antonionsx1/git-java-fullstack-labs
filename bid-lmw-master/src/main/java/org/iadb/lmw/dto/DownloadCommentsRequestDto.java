@@ -10,9 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DownloadCommentsRequestDto implements Serializable{
+public class DownloadCommentsRequestDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private List<Long> ids;
-	
+    private static final long serialVersionUID = 1L;
+    private List<Long> ids;
+
 }

@@ -13,6 +13,7 @@ import lombok.Setter;
 public class DeleteCommentsRequestDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private List<Long> ids;
+
+	private List<Long> ids;
 
 }
