@@ -18,6 +18,7 @@ public class DatesResponseDto implements Serializable {
 
     @Serial
 	private static final long serialVersionUID = 1L;
+
     private String startDate;
     private String endDate;
 
