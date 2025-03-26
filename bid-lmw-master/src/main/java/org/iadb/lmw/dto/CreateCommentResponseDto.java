@@ -13,10 +13,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CreateCommentResponseDto implements Serializable {/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String message;
+public class CreateCommentResponseDto implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private String message;
 
 }
