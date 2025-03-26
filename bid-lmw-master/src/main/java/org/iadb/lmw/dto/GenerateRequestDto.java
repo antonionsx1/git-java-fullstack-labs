@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class GenerateRequestDto implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
     @NotBlank(message = "temporal no debe estar vacío")
     private String temporal;
