@@ -18,6 +18,7 @@ public class DeleteCommentResponseDto implements Serializable {
 
     @Serial
 	private static final long serialVersionUID = 1L;
+
     private String message;
 
 }
