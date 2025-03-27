@@ -15,6 +15,7 @@ public class GenerateRequestDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
     @NotBlank(message = "temporal no debe estar vacío")
     private String temporal;
     @NotBlank(message = "password no debe estar vacío")
