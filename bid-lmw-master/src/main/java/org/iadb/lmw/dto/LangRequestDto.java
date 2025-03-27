@@ -16,7 +16,8 @@ import lombok.ToString;
 public class LangRequestDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     private Boolean useLang;
     private String lang;
-	
+
 }
