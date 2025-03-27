@@ -19,7 +19,7 @@ public class ReadCommentResponseDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-    
+
     private List<Long> readCommentsIds;
     private List<Long> notFoundCommentsIds;
     private String message;
