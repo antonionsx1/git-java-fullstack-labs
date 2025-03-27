@@ -15,8 +15,8 @@ import lombok.ToString;
 @ToString
 public class GenerateResponseDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String token;
-	private String profile;
-	private String fullName;
+    private static final long serialVersionUID = 1L;
+    private String token;
+    private String profile;
+    private String fullName;
 }
