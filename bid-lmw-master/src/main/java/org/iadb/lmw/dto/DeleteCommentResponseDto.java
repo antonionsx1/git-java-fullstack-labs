@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
@@ -13,9 +14,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class DeleteCommentResponseDto  implements Serializable {
+public class DeleteCommentResponseDto implements Serializable {
 
+    @Serial
 	private static final long serialVersionUID = 1L;
-	private String message;
+    private String message;
 
 }
