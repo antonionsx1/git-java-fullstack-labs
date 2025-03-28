@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ import lombok.ToString;
 @ToString
 public class LangRequestDto implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private Boolean useLang;
