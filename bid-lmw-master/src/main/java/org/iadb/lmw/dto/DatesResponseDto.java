@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
@@ -13,10 +14,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class DatesResponseDto implements Serializable{
+public class DatesResponseDto implements Serializable {
 
+    @Serial
 	private static final long serialVersionUID = 1L;
-	private String startDate;
-	private String endDate;
-	
+    private String startDate;
+    private String endDate;
+
 }

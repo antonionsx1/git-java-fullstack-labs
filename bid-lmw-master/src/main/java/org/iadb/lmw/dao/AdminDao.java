@@ -27,7 +27,12 @@ public interface AdminDao extends CrudRepository<Admin, Integer>{
 	 * @return
 	 */
 	List<Admin> findByEmail(String email);
-	
+
+	/**
+	 * 
+	 * @param temporal
+	 * @return
+	 */
 	List<Admin> findByTemporal(String temporal);
 	
 }
