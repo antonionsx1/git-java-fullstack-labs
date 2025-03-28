@@ -15,6 +15,6 @@ import lombok.ToString;
 @ToString
 public class RegisterResponseDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String message;
+    private static final long serialVersionUID = 1L;
+    private String message;
 }

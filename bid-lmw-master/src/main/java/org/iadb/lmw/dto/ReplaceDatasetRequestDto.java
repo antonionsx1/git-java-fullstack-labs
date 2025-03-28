@@ -15,11 +15,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ReplaceDatasetRequestDto implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	@NotBlank(message = "fileName no debe estár vacío")
-	private String fileName;
-	@NotBlank(message = "comment no debe estár vacío")
-	private String comment;
-	
+
+    private static final long serialVersionUID = 1L;
+    @NotBlank(message = "fileName no debe estár vacío")
+    private String fileName;
+    @NotBlank(message = "comment no debe estár vacío")
+    private String comment;
+
 }
