@@ -22,4 +22,5 @@ public class LoginResponseDto implements Serializable {
     private String token;
     private String profile;
     private String fullName;
+
 }

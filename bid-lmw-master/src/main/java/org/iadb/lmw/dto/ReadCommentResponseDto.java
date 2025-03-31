@@ -16,9 +16,9 @@ import lombok.ToString;
 @ToString
 public class ReadCommentResponseDto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private List<Long> readCommentsIds;
-	private List<Long> notFoundCommentsIds;
-	private String message;
-	
+    private static final long serialVersionUID = 1L;
+    private List<Long> readCommentsIds;
+    private List<Long> notFoundCommentsIds;
+    private String message;
+
 }
