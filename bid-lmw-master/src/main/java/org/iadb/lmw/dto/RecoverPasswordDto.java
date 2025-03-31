@@ -18,4 +18,5 @@ public class RecoverPasswordDto implements Serializable {
 
     @NotBlank(message = "email no debe estar vacío")
     private String email;
+
 }
