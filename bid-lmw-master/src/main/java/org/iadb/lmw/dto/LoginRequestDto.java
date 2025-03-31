@@ -17,6 +17,7 @@ public class LoginRequestDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
     @NotBlank(message = "email is mandatory")
     private String email;
     @NotBlank(message = "password is mandatory")
