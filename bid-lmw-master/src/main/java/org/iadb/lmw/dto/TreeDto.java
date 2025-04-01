@@ -20,9 +20,9 @@ import lombok.ToString;
 @RedisHash("Tree")
 public class TreeDto implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
-	@Id
-	private String id;
-	private List<ViewTreeResponseDTO> tree;
-	
+    private static final long serialVersionUID = 1L;
+    @Id
+    private String id;
+    private List<ViewTreeResponseDTO> tree;
+
 }

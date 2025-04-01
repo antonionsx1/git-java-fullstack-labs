@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SummaryDTO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
     private String message;
     private String fileName;
