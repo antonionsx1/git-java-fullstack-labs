@@ -40,4 +40,5 @@ public class Admin {
     private Date regDate;
 
     private Boolean status;
+
 }
