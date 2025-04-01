@@ -1,5 +1,6 @@
 package org.iadb.lmw.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
@@ -15,8 +16,9 @@ import lombok.ToString;
 @ToString
 public class LoginResponseDto implements Serializable {
 
+    @Serial
 	private static final long serialVersionUID = 1L;
-	private String token;
-	private String profile;
-	private String fullName;
+    private String token;
+    private String profile;
+    private String fullName;
 }

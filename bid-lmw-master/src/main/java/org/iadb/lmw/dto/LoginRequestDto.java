@@ -23,4 +23,5 @@ public class LoginRequestDto implements Serializable {
 
     @NotBlank(message = "password is mandatory")
     private String password;
+
 }
