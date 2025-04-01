@@ -15,6 +15,7 @@ public class RecoverPasswordDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
     @NotBlank(message = "email no debe estar vacío")
     private String email;
 }
