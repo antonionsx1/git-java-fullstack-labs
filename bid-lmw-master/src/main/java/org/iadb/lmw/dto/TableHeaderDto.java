@@ -14,9 +14,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class TableHeaderDto implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	private String text;
+
+    private static final long serialVersionUID = 1L;
+    private String text;
     private String value;
-	
+
 }

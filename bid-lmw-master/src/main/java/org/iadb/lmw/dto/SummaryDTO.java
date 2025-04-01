@@ -11,15 +11,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SummaryDTO implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	private String message;
-	private String fileName;
-	private Integer rowsCount;
-	private Integer totalTableRowsCount;
-	private Integer queryRowsCount;
-	private List<TableHeaderDto> headers;
-	private List<HashMap<String, String>> rows;
-	
+public class SummaryDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private String message;
+    private String fileName;
+    private Integer rowsCount;
+    private Integer totalTableRowsCount;
+    private Integer queryRowsCount;
+    private List<TableHeaderDto> headers;
+    private List<HashMap<String, String>> rows;
+
 }
