@@ -16,6 +16,7 @@ public class SummaryDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
     private String message;
     private String fileName;
     private Integer rowsCount;

@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class UnaCosa {
 
-	private String message;
+    private String message;
 }
