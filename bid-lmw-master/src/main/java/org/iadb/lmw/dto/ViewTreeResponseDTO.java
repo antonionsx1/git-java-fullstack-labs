@@ -15,15 +15,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ViewTreeResponseDTO implements Serializable{
+public class ViewTreeResponseDTO implements Serializable {
 
-	@Serial
-	private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-	private String id;
+    private String id;
 
-	private String name;
+    private String name;
 
-	private List<ViewTreeResponseDTO> childrens;
-	
+    private List<ViewTreeResponseDTO> childrens;
+
 }
