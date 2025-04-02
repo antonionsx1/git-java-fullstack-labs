@@ -16,7 +16,7 @@ import lombok.ToString;
 public class ViewIndicatorsTreeResponseDto implements Serializable {
 
     @Serial
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     private String id;
 
