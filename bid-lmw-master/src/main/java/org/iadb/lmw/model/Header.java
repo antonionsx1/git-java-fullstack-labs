@@ -16,6 +16,9 @@ public class Header {
 
     private String frontEndHeader;
 
+    /**
+     * 
+     */
     public Header() {
     }
 
