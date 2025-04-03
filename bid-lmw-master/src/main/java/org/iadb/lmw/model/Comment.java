@@ -29,6 +29,7 @@ public class Comment implements Serializable {
     private String commment;
 
     private Boolean read;
+
     private Date regDate;
     private Boolean status;
 

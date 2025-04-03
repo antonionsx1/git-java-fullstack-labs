@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -38,7 +41,7 @@ public class Country {
     private String code;
 
     private Date regDate;
-    
+
     private Boolean status;
 
 }
