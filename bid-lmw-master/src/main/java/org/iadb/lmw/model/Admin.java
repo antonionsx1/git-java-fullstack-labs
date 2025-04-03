@@ -38,5 +38,6 @@ public class Admin {
     private Date tempExp;
 
     private Date regDate;
+
     private Boolean status;
 }
