@@ -14,7 +14,6 @@ public class SingleResponse<T> {
     private Integer code;
     private T data;
 
-
     public SingleResponse() {
         super();
     }
