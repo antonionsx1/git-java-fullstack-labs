@@ -39,4 +39,5 @@ public class Country {
 
     private Date regDate;
     private Boolean status;
+
 }

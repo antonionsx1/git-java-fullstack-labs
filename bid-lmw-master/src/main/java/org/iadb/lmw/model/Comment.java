@@ -25,6 +25,7 @@ public class Comment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String commment;
     private Boolean read;
     private Date regDate;
