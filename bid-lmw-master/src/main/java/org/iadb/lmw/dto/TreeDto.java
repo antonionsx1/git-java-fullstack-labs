@@ -23,9 +23,10 @@ public class TreeDto implements Serializable {
 
     @Serial
 	private static final long serialVersionUID = 1L;
-    
+
     @Id
     private String id;
+
     private List<ViewTreeResponseDTO> tree;
 
 }
