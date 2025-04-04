@@ -56,6 +56,10 @@ public class Header {
         return frontEndHeader;
     }
 
+    /**
+     * 
+     * @param frontEndHeader
+     */
     public void setFrontEndHeader(String frontEndHeader) {
         this.frontEndHeader = frontEndHeader;
     }
