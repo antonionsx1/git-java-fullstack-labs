@@ -40,6 +40,10 @@ public class Header {
         return dataBaseHeader;
     }
 
+    /**
+     * 
+     * @param dataBaseHeader
+     */
     public void setDataBaseHeader(String dataBaseHeader) {
         this.dataBaseHeader = dataBaseHeader;
     }
