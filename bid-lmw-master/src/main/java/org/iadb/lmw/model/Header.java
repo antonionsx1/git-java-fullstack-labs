@@ -41,13 +41,17 @@ public class Header {
     }
 
     /**
-     * 
+     *
      * @param dataBaseHeader
      */
     public void setDataBaseHeader(String dataBaseHeader) {
         this.dataBaseHeader = dataBaseHeader;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFrontEndHeader() {
         return frontEndHeader;
     }
