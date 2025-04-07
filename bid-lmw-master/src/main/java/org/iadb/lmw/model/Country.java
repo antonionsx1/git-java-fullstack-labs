@@ -38,6 +38,7 @@ public class Country {
     private String code;
 
     private Date regDate;
+    
     private Boolean status;
 
 }
