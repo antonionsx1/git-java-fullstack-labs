@@ -6,6 +6,9 @@ import java.util.Optional;
 import org.iadb.lmw.model.Admin;
 import org.springframework.data.repository.CrudRepository;
 
+/**
+ *
+ */
 public interface AdminDao extends CrudRepository<Admin, Integer>{
 
 	/**

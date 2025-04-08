@@ -6,6 +6,9 @@ import java.util.Optional;
 import org.iadb.lmw.model.Comment;
 import org.springframework.data.repository.CrudRepository;
 
+/**
+ *
+ */
 public interface CommentDao extends CrudRepository<Comment, Long> {
 
     /**
