@@ -17,15 +17,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Comment implements Serializable{
+public class Comment implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String commment;
-	private Boolean read;
-	private Date regDate;
-	private Boolean status;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String commment;
+    private Boolean read;
+    private Date regDate;
+    private Boolean status;
 
 }
