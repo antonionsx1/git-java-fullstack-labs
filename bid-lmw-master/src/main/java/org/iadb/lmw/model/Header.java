@@ -57,7 +57,7 @@ public class Header {
     }
 
     /**
-     * 
+     *
      * @param frontEndHeader
      */
     public void setFrontEndHeader(String frontEndHeader) {
