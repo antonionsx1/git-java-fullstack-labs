@@ -6,7 +6,7 @@ import org.iadb.lmw.model.Country;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * 
+ *
  */
 public interface CountryDao extends CrudRepository<Country, Integer> {
 
