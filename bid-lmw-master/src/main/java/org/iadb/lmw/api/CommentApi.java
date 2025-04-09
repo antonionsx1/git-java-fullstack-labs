@@ -41,6 +41,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
+/**
+ *
+ */
 @RestController
 @RequestMapping("/comment")
 @CrossOrigin(origins = "${security.cors.origin}", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
