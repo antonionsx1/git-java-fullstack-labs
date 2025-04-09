@@ -1,5 +1,9 @@
 package org.iadb.lmw.dto;
 
+/**
+ * 
+ */
+
 import java.io.Serial;
 import java.io.Serializable;
 

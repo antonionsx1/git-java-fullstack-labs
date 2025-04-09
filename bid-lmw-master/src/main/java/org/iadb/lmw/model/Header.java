@@ -4,7 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.ToString;
 
-
+/**
+ *
+ */
 @Entity
 @ToString
 public class Header {
@@ -13,7 +15,7 @@ public class Header {
     private String dataBaseHeader;
 
     private String frontEndHeader;
-	
+
     public Header() {
     }
 

@@ -31,6 +31,7 @@ public class Comment implements Serializable {
     private Boolean read;
 
     private Date regDate;
+
     private Boolean status;
 
 }
