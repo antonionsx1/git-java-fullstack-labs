@@ -17,11 +17,16 @@ public class Header {
     private String frontEndHeader;
 
     /**
-     * 
+     *
      */
     public Header() {
     }
 
+    /**
+     * 
+     * @param dataBaseHeader
+     * @param frontEndHeader
+     */
     public Header(String dataBaseHeader, String frontEndHeader) {
         this.dataBaseHeader = dataBaseHeader;
         this.frontEndHeader = frontEndHeader;
