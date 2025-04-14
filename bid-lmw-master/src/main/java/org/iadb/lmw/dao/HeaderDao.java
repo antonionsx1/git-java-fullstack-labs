@@ -6,7 +6,7 @@ import org.iadb.lmw.model.Header;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * 
+ *
  */
 public interface HeaderDao extends CrudRepository<Header, String> {
 
