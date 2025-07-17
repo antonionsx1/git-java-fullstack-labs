@@ -72,7 +72,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * 
+     *
      * @param request
      * @return
      */
@@ -89,6 +89,12 @@ public class CommentServiceImpl implements CommentService {
         return new CreateCommentResponseDto("Registro exitoso con ID: " + comment.getId().toString());
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     * @throws FileNotFoundException
+     */
     @Override
     public ReadCommentResponseDto readComment(ReadCommentsRequestDto request) throws FileNotFoundException {
         log.info("Buscar comentario");
