@@ -33,7 +33,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 
 /**
- * 
+ *
  */
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -52,6 +52,10 @@ public class CommentServiceImpl implements CommentService {
     @Value("${data.dataset.ext}")
     private String fileExt;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<ViewCommentResponseDto> viewAllComments() {
         log.info("Listar comentarios");

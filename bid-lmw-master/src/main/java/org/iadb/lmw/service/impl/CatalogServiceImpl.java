@@ -181,6 +181,11 @@ public class CatalogServiceImpl implements CatalogService {
         return new FilterDTO(header, conditions);
     }
 
+    /**
+     * 
+     * @param filters
+     * @return
+     */
     private List<HashMap<String, String>> makeQuery(ArrayList<FilterDTO> filters) {
         QueryRequestDTO query = new QueryRequestDTO(true, false, false, "", "", 0, filters);
         return dynamicSQLService.executeDynamicQuery(query, tableName);
