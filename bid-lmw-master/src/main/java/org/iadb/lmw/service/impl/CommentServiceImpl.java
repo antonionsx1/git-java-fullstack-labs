@@ -116,6 +116,12 @@ public class CommentServiceImpl implements CommentService {
         return new ReadCommentResponseDto(readCommentsIds, notFoundCommentsIds, "Ok");
     }
 
+    /**
+     * 
+     * @param request
+     * @return
+     * @throws FileNotFoundException
+     */
     @Override
     public DeleteCommentResponseDto deleteComment(DeleteCommentsRequestDto request) throws FileNotFoundException {
         log.info("Eliminar comentario");
