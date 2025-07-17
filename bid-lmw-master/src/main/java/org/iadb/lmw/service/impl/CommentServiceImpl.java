@@ -71,6 +71,11 @@ public class CommentServiceImpl implements CommentService {
         return dtos;
     }
 
+    /**
+     * 
+     * @param request
+     * @return
+     */
     @Override
     public CreateCommentResponseDto createComment(CreateCommentRequestDto request) {
         log.info("Crear comentario");

@@ -182,7 +182,7 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     /**
-     * 
+     *
      * @param filters
      * @return
      */
@@ -191,6 +191,11 @@ public class CatalogServiceImpl implements CatalogService {
         return dynamicSQLService.executeDynamicQuery(query, tableName);
     }
 
+    /**
+     *
+     * @param header
+     * @return
+     */
     private FilterDTO getInitialFilter(String header) {
         List<String> initialConditions = new ArrayList<>();
         return new FilterDTO(header, initialConditions);
