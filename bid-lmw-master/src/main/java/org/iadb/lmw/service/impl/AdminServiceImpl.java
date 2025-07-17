@@ -232,7 +232,6 @@ public class AdminServiceImpl implements AdminService {
         } else {
             return new DeleteAdminResponseDto("Usuario no encontrado");
         }
-
     }
 
     @Override

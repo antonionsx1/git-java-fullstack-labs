@@ -35,115 +35,115 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentServiceImpl implements CommentService {
 
-	private static final Logger log = LoggerFactory.getLogger(CommentServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(CommentServiceImpl.class);
 
-	@Autowired
-	private CommentDao commentDao;
-	@Autowired
-	DynamicSQLQueryService dynamicSQLQuery;
+    @Autowired
+    private CommentDao commentDao;
+    @Autowired
+    DynamicSQLQueryService dynamicSQLQuery;
 
-	@Value("${data.dataset.download-path}")
-	private String downloadPath;
-	@Value("${data.dataset.prefix}")
-	private String filePrefix;
-	@Value("${data.dataset.ext}")
-	private String fileExt;
+    @Value("${data.dataset.download-path}")
+    private String downloadPath;
+    @Value("${data.dataset.prefix}")
+    private String filePrefix;
+    @Value("${data.dataset.ext}")
+    private String fileExt;
 
-	@Override
-	public List<ViewCommentResponseDto> viewAllComments() {
-		log.info("Listar comentarios");
-		List<Comment> comments = commentDao.findAll();
-		List<ViewCommentResponseDto> dtos = new ArrayList<>();
+    @Override
+    public List<ViewCommentResponseDto> viewAllComments() {
+        log.info("Listar comentarios");
+        List<Comment> comments = commentDao.findAll();
+        List<ViewCommentResponseDto> dtos = new ArrayList<>();
 
-		for (Comment comment : comments) {
-			ViewCommentResponseDto dto = new ViewCommentResponseDto();
-			BeanUtils.copyProperties(comment, dto);
-			dtos.add(dto);
-		}
+        for (Comment comment : comments) {
+            ViewCommentResponseDto dto = new ViewCommentResponseDto();
+            BeanUtils.copyProperties(comment, dto);
+            dtos.add(dto);
+        }
 
-		return dtos;
-	}
+        return dtos;
+    }
 
-	@Override
-	public CreateCommentResponseDto createComment(CreateCommentRequestDto request) {
-		log.info("Crear comentario");
-		Comment comment = new Comment();
-		comment.setCommment(request.getComment());
-		comment.setRead(false);
-		comment.setRegDate(new Date());
-		comment.setStatus(true);
-		comment = commentDao.save(comment);
+    @Override
+    public CreateCommentResponseDto createComment(CreateCommentRequestDto request) {
+        log.info("Crear comentario");
+        Comment comment = new Comment();
+        comment.setCommment(request.getComment());
+        comment.setRead(false);
+        comment.setRegDate(new Date());
+        comment.setStatus(true);
+        comment = commentDao.save(comment);
 
-		return new CreateCommentResponseDto("Registro exitoso con ID: " + comment.getId().toString());
-	}
+        return new CreateCommentResponseDto("Registro exitoso con ID: " + comment.getId().toString());
+    }
 
-	@Override
-	public ReadCommentResponseDto readComment(ReadCommentsRequestDto request) throws FileNotFoundException {
-		log.info("Buscar comentario");
-		
-		List<Long> readCommentsIds = new ArrayList<>();
-		List<Long> notFoundCommentsIds = new ArrayList<>();
-		
-		for(Long id:request.getIds()) {
-			Optional<Comment> comment = commentDao.findById(id);
-			if (comment.isEmpty()) {
-				notFoundCommentsIds.add(id);
-			} else {
-				comment.get().setRead(true);
-				commentDao.save(comment.get());
-				readCommentsIds.add(id);
-			}
-		}
-		
-		return new ReadCommentResponseDto(readCommentsIds, notFoundCommentsIds, "Ok");
-	}
+    @Override
+    public ReadCommentResponseDto readComment(ReadCommentsRequestDto request) throws FileNotFoundException {
+        log.info("Buscar comentario");
 
-	@Override
-	public DeleteCommentResponseDto deleteComment(DeleteCommentsRequestDto request) throws FileNotFoundException {
-		log.info("Eliminar comentario");
-		for (Long id : request.getIds()) {
-			Optional<Comment> comment = commentDao.findById(id);
+        List<Long> readCommentsIds = new ArrayList<>();
+        List<Long> notFoundCommentsIds = new ArrayList<>();
 
-			if (comment.isEmpty())
-				throw new FileNotFoundException("Comentario " + id.toString() + " no encontrado");
-		}
+        for (Long id : request.getIds()) {
+            Optional<Comment> comment = commentDao.findById(id);
+            if (comment.isEmpty()) {
+                notFoundCommentsIds.add(id);
+            } else {
+                comment.get().setRead(true);
+                commentDao.save(comment.get());
+                readCommentsIds.add(id);
+            }
+        }
 
-		for (Long id : request.getIds()) {
-			Optional<Comment> comment = commentDao.findById(id);
-			if (comment.isPresent())
-				commentDao.delete(comment.get());
-		}
+        return new ReadCommentResponseDto(readCommentsIds, notFoundCommentsIds, "Ok");
+    }
 
-		return new DeleteCommentResponseDto("Comentarios eliminados con éxito");
+    @Override
+    public DeleteCommentResponseDto deleteComment(DeleteCommentsRequestDto request) throws FileNotFoundException {
+        log.info("Eliminar comentario");
+        for (Long id : request.getIds()) {
+            Optional<Comment> comment = commentDao.findById(id);
 
-	}
+            if (comment.isEmpty())
+                throw new FileNotFoundException("Comentario " + id.toString() + " no encontrado");
+        }
 
-	@Override
-	public CommentsFileResponseDto downloadCommentsFile(DownloadCommentsRequestDto request) {
-		log.info("Descargar archivo de comentarios");
-		CommentsFileResponseDto response = new CommentsFileResponseDto();
-		String temporalDownloadPath = downloadPath.replace('/', File.separatorChar);
+        for (Long id : request.getIds()) {
+            Optional<Comment> comment = commentDao.findById(id);
+            if (comment.isPresent())
+                commentDao.delete(comment.get());
+        }
 
-		if (!new File(temporalDownloadPath).exists()) {
-			new File(temporalDownloadPath).mkdirs();
-		}
+        return new DeleteCommentResponseDto("Comentarios eliminados con éxito");
 
-		String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMddHHmmss"));
-		String fileName = filePrefix + "Generated_" + timeStamp;
-		String newFilePath = downloadPath + fileName + fileExt;
-		response.setName(newFilePath);
+    }
 
-		if (!dynamicSQLQuery.downloadCommentsFile(request.getIds(), newFilePath))
-			return response;
+    @Override
+    public CommentsFileResponseDto downloadCommentsFile(DownloadCommentsRequestDto request) {
+        log.info("Descargar archivo de comentarios");
+        CommentsFileResponseDto response = new CommentsFileResponseDto();
+        String temporalDownloadPath = downloadPath.replace('/', File.separatorChar);
 
-		InputStream targetFile = null;
-		try {
-			targetFile = new FileInputStream(new File(newFilePath));
-			response.setFile(new InputStreamResource(targetFile));
-		} catch (FileNotFoundException e) {
-			log.error(e.getMessage());
-		}
+        if (!new File(temporalDownloadPath).exists()) {
+            new File(temporalDownloadPath).mkdirs();
+        }
 
-		return response;
-	}
+        String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMddHHmmss"));
+        String fileName = filePrefix + "Generated_" + timeStamp;
+        String newFilePath = downloadPath + fileName + fileExt;
+        response.setName(newFilePath);
+
+        if (!dynamicSQLQuery.downloadCommentsFile(request.getIds(), newFilePath))
+            return response;
+
+        InputStream targetFile = null;
+        try {
+            targetFile = new FileInputStream(new File(newFilePath));
+            response.setFile(new InputStreamResource(targetFile));
+        } catch (FileNotFoundException e) {
+            log.error(e.getMessage());
+        }
+
+        return response;
+    }
 }
