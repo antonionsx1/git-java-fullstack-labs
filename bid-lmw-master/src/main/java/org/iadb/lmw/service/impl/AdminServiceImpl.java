@@ -234,6 +234,11 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Admin findById(Integer id) {
         Optional<Admin> admin = adminDao.findById(id);

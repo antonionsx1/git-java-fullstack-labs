@@ -169,6 +169,13 @@ public class CatalogServiceImpl implements CatalogService {
         return tree;
     }
 
+    /**
+     * 
+     * @param result
+     * @param header
+     * @param findRegex
+     * @return
+     */
     private FilterDTO updateFilter(HashMap<String, String> result, String header, String findRegex) {
         List<String> conditions = new ArrayList<>();
         conditions.add(result.get(header.replaceAll(findRegex, "")));
