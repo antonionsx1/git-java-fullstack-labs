@@ -170,7 +170,6 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     /**
-     * 
      * @param result
      * @param header
      * @param findRegex

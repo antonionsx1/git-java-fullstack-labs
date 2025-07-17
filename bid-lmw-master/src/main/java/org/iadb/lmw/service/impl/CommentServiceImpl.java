@@ -32,6 +32,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 
+/**
+ * 
+ */
 @Service
 public class CommentServiceImpl implements CommentService {
 
