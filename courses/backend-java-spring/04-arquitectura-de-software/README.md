@@ -13,6 +13,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 9. [Escalabilidad y rendimiento](09-escalabilidad-y-rendimiento.md): métricas, pruebas de carga y diagnóstico de cuellos de botella.
 10. [Arquitectura de datos](10-arquitectura-de-datos.md): propiedad, integridad, transacciones y evolución del esquema.
 11. [Seguridad](11-seguridad.md): identidad, autorización y protección del flujo de inscripción.
+12. [Observabilidad](12-observabilidad.md): métricas, logs y trazas para diagnosticar la API de cursos.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
