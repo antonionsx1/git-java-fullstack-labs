@@ -34,6 +34,8 @@ class SeguridadApi {
                 .authorizeHttpRequests(a -> a
                         .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                         .requestMatchers(HttpMethod.GET, "/cursos").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/actuator/metrics", "/actuator/metrics/*")
+                        .hasAuthority("SCOPE_observabilidad:leer")
                         .requestMatchers(HttpMethod.POST, "/cursos/{cursoId}/inscripciones")
                         .hasAuthority("SCOPE_inscripciones:crear")
                         .anyRequest().denyAll())

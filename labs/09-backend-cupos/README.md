@@ -50,6 +50,14 @@ Arranca con `--spring.config.additional-location=file:/ruta/seguridad-local.yaml
 
 La API solo autentica mediante tokens Bearer en cabecera, sin sesión ni cookies de autenticación. El laboratorio escucha en loopback; no reutilices la configuración de prueba en producción. Para probar sin un emisor externo, `mvn verify` firma los tokens de prueba con claves efímeras y usa PostgreSQL.
 
+## Consultar señales
+
+Usa un JWT con el scope `observabilidad:leer` para leer `GET /actuator/metrics/http.server.requests` o `GET /actuator/metrics/cursos.inscripciones`. Ese scope no concede permiso para inscribir y un token con solo `inscripciones:crear` no puede leer métricas. Los contadores de negocio aparecen al observar su primer resultado.
+
+Busca en los logs JSON el `requestId` que devuelve la cabecera `X-Request-Id`. Los eventos de negocio usan la ruta normalizada y distinguen `confirmada` (201), `duplicada` o `cupo_agotado` (409), y `fallo_persistencia` (503). Los rechazos de seguridad se cuentan en las métricas HTTP, no como resultados de inscripción. La duración del log de negocio mide el caso de uso y su transacción; la métrica HTTP mide la solicitud completa.
+
+`mvn verify` comprueba la protección de las métricas, la correlación entre cabecera y log, y que un rechazo de escritura de PostgreSQL no descuente un cupo. No se exportan trazas en este laboratorio.
+
 ## Decisión
 
 El SQL decrementa el cupo solo cuando es positivo: bajo el aislamiento predeterminado de PostgreSQL, una actualización concurrente espera por la misma fila y vuelve a evaluar la condición. El decremento y el insert pertenecen a la misma transacción. Una lectura previa del cupo sin una actualización condicional no ofrece esa garantía.
