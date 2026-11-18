@@ -1,6 +1,6 @@
 # 11. Seguridad
 
-El [laboratorio del último cupo](../../../labs/09-backend-cupos/README.md) escucha en loopback y acepta `alumnoId` en el POST. Eso facilita las pruebas de concurrencia, pero no autentica a nadie. Validar que el identificador es positivo no demuestra que corresponda a quien llama. Esta lección diseña un contrato seguro antes de publicar la API.
+La primera versión del [laboratorio del último cupo](../../../labs/09-backend-cupos/README.md) escuchaba en loopback y aceptaba `alumnoId` en el POST. Validar que el identificador es positivo no demuestra que corresponda a quien llama. Esta lección diseña un contrato que obtiene el alumno del lado del servidor.
 
 ## Identidad y permisos
 
@@ -27,4 +27,4 @@ En un diseño con Spring Security y tokens JWT, la API valida la firma, el emiso
 2. Prueba Catálogo sin credenciales y el POST con token ausente, inválido o sin permiso. Añade una prueba que envíe un identificador ajeno y comprueba que nunca se crea una inscripción para esa otra identidad. En los rechazos, verifica que no cambia el cupo.
 3. Repite las pruebas de concurrencia y rollback con dos identidades de prueba distintas para la carrera y la misma identidad para el duplicado. Debe quedar una sola inscripción cuando existe un solo lugar.
 
-**Entregable:** matriz de acceso, pruebas de autorización y evidencia de las garantías de PostgreSQL. Esta lección no habilita autenticación ni cambia aún el laboratorio.
+**Entregable:** matriz de acceso, pruebas de autorización y evidencia de las garantías de PostgreSQL. La [solución del laboratorio](../../../labs/09-backend-cupos/README.md#probar-la-api) usa un emisor configurado y rechaza `alumnoId` en el POST.

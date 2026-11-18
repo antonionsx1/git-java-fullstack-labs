@@ -27,15 +27,28 @@ Las altas nuevas escriben la fecha de confirmación en la misma transacción que
 
 ## Probar la API
 
-En una base recién iniciada, ejecuta `mvn spring-boot:run` y, desde otra terminal:
+En una base recién iniciada, ejecuta `mvn spring-boot:run`. El catálogo es público y el POST sin credenciales devuelve 401. Sin configuración del emisor, el catálogo sigue disponible, pero no se acepta ningún token.
 
 ```sh
 curl -i http://127.0.0.1:8080/cursos
-curl -i -X POST "http://127.0.0.1:8080/cursos/1/inscripciones?alumnoId=101"
-curl -i -X POST "http://127.0.0.1:8080/cursos/1/inscripciones?alumnoId=102"
+curl -i -X POST http://127.0.0.1:8080/cursos/1/inscripciones
 ```
 
-La primera inscripción devuelve 201 y la segunda 409. Ejecuta `docker compose down -v` para eliminar los datos de esta base local y volver a empezar. La API no autentica alumnos: el identificador explícito solo sirve para la práctica y la aplicación escucha en loopback.
+Para probar el alta manualmente, usa un emisor de pruebas y una configuración externa como esta (sin claves privadas ni tokens):
+
+```yaml
+cursos:
+  seguridad:
+    emisor: https://issuer.example.test
+    audiencia: cursos-lab
+    clave-publica: file:///ruta/clave-publica.pem
+    alumnos:
+      "[sujeto-del-alumno]": 101
+```
+
+Arranca con `--spring.config.additional-location=file:/ruta/seguridad-local.yaml` como argumento de la aplicación. El token debe estar firmado con RS256 por el emisor configurado, tener la audiencia esperada, una expiración válida, el sujeto vinculado y el scope `inscripciones:crear`. Envía el token en la cabecera `Authorization: Bearer …`, sin `alumnoId` en la URL. Con cupo y credenciales válidas, la primera alta devuelve 201 y el duplicado devuelve 409.
+
+La API solo autentica mediante tokens Bearer en cabecera, sin sesión ni cookies de autenticación. El laboratorio escucha en loopback; no reutilices la configuración de prueba en producción. Para probar sin un emisor externo, `mvn verify` firma los tokens de prueba con claves efímeras y usa PostgreSQL.
 
 ## Decisión
 
