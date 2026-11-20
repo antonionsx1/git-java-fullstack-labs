@@ -8,9 +8,13 @@ public final class GreetingService {
      * @return a normalized greeting
      */
     public String greet(String name) {
+        requireName(name);
+        return "Hola, " + name.trim() + ". Practiquemos Git con intención.";
+    }
+
+    private void requireName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name must not be blank");
         }
-        return "Hola, " + name.trim() + ". Practiquemos Git con intención.";
     }
 }
