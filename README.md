@@ -2,6 +2,12 @@
 
 Ruta práctica para aprender el Git usado hoy en equipos de software. El objetivo no es memorizar comandos: es trabajar con cambios pequeños, revisables, recuperables y automatizados sobre una aplicación Java real.
 
+## Retomar o ampliar la ruta
+
+- [Guía de continuidad](docs/CONTINUIDAD.md): estado actual, pendientes y punto exacto para retomar.
+- [Catálogo de cursos](courses/README.md): cursos incorporados y rutas recomendadas.
+- [Plantilla para cursos nuevos](courses/_template/README.md): formato reutilizable para evaluar vigencia y documentar evidencia.
+
 ## Ruta
 
 | Módulo | Resultado |
