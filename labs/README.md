@@ -11,6 +11,7 @@ Completa cada reto en una rama y abre un PR.
 7. **Release:** publica v1.0.0 y v1.0.1.
 8. **CI:** provoca un check rojo y restáuralo.
 9. **[Backend: el último cupo](09-backend-cupos/README.md):** verifica la inscripción concurrente con Spring Boot y PostgreSQL.
+10. **[Fundamentos de Java](java-fundamentos/README.md):** practica POO, algoritmos, estructuras de datos y archivos.
 
 ## Bitácora del PR
 
