@@ -37,4 +37,4 @@ Completa un registro breve de decisión arquitectónica (ADR). Usa la decisión 
 | Verificación | Resultado esperado de la prueba concurrente y objetivo de latencia con una carga definida. |
 | Revisión | Qué señal medible justificaría reconsiderar la decisión. |
 
-El ADR es el entregable de esta lección. Comprueba la decisión en el [laboratorio del último cupo](../../../labs/09-backend-cupos/README.md).
+El ADR es el entregable de esta lección. Después de redactar el tuyo, compáralo con el [ADR de ejemplo](adr/001-monolito-modular.md) y comprueba la decisión en el [laboratorio del último cupo](../../../labs/09-backend-cupos/README.md).
