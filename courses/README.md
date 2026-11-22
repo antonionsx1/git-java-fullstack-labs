@@ -7,6 +7,7 @@ Este directorio registra cursos externos y traduce su contenido a prácticas ver
 | Curso o ruta | Enfoque laboral | Estado | Laboratorios |
 | --- | --- | --- | --- |
 | Git profesional para Java Full Stack | Colaboración, recuperación, PR, releases y CI | En progreso | `labs/01-modelo-mental` y retos de `labs/README.md` |
+| [Backend con Java y Spring](backend-java-spring/README.md) | Decisiones de arquitectura y atributos de calidad | En progreso | Ejercicio de diseño de una API de cursos |
 
 ## Criterios para incorporar un curso
 
