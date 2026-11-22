@@ -27,3 +27,33 @@ jobs:
           cache: maven
       - name: Compile and test
         run: mvn --batch-mode --no-transfer-progress verify
+
+  backend-cupos:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: labs/09-backend-cupos
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: cursos
+          POSTGRES_USER: lab
+          POSTGRES_PASSWORD: lab
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd "pg_isready -U lab -d cursos"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+          cache-dependency-path: labs/09-backend-cupos/pom.xml
+      - name: Verify with PostgreSQL
+        run: mvn --batch-mode --no-transfer-progress verify
