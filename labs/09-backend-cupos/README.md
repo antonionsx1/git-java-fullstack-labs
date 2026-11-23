@@ -2,6 +2,8 @@
 
 Aplica [Estilos arquitectónicos](../../courses/backend-java-spring/04-arquitectura-de-software/02-estilos-arquitectonicos.md) con un monolito modular de Spring Boot y PostgreSQL. El catálogo lee sus propios datos; inscripciones controla el cupo y el registro. Ambos módulos se despliegan juntos.
 
+Consulta la [guía de arquitectura](ARQUITECTURA.md) para ver los límites del sistema, la transacción del último cupo y las pruebas que respaldan cada garantía.
+
 ## Verificar
 
 Con JDK 17+, Maven 3.6.3+ y Docker Compose, ejecuta desde este directorio:
