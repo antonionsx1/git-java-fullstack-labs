@@ -29,3 +29,5 @@ La inscripción de un curso ya aprovisionado no necesita consultar Catálogo en 
 3. Escribe los criterios de aceptación: actualizar Catálogo sin redesplegar Inscripciones, inscribir en un curso habilitado con Catálogo fuera de servicio, no reponer cupos por aprovisionamiento duplicado y conservar las pruebas de concurrencia y rollback.
 
 **Entregable:** un diagrama y un ADR breve que recomiende mantener el monolito o extraer Catálogo, con la evidencia que justificaría esa decisión. No se requiere dividir el laboratorio para esta lección.
+
+**Solución de referencia:** [ADR 002: mantener el monolito y evaluar la extracción de Catálogo](adr/002-extraccion-catalogo.md).
