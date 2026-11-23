@@ -1,7 +1,10 @@
 package dev.learning.cursos.inscripciones.aplicacion;
 
-public interface PersistenciaInscripciones {
-    boolean consumirCupo(long cursoId);
+import dev.learning.cursos.inscripciones.dominio.AlumnoId;
+import dev.learning.cursos.inscripciones.dominio.CursoId;
 
-    void guardarInscripcion(long cursoId, long alumnoId);
+public interface PersistenciaInscripciones {
+    boolean consumirCupo(CursoId cursoId);
+
+    void guardarInscripcion(CursoId cursoId, AlumnoId alumnoId);
 }

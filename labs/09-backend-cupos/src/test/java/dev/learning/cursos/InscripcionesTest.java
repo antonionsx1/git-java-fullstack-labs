@@ -66,8 +66,19 @@ class InscripcionesTest {
         return inscribir(alumno);
     }
 
+    @Test
+    void identificadoresInvalidosDevuelven400SinConsumirCupo() throws Exception {
+        assertThat(inscribir(0, 101)).isEqualTo(400);
+        assertThat(inscribir(1, -1)).isEqualTo(400);
+        verificarEstado(1, 0);
+    }
+
     private int inscribir(long alumno) throws Exception {
-        var uri = URI.create("http://127.0.0.1:" + port + "/cursos/1/inscripciones?alumnoId=" + alumno);
+        return inscribir(1, alumno);
+    }
+
+    private int inscribir(long curso, long alumno) throws Exception {
+        var uri = URI.create("http://127.0.0.1:" + port + "/cursos/" + curso + "/inscripciones?alumnoId=" + alumno);
         var request = HttpRequest.newBuilder(uri).timeout(Duration.ofSeconds(10))
                 .POST(HttpRequest.BodyPublishers.noBody()).build();
         return http.send(request, HttpResponse.BodyHandlers.discarding()).statusCode();
