@@ -25,3 +25,5 @@ Una escritura es distinta. Si el cliente agota su tiempo justo después del comm
 3. Explica cómo verificarías que la saturación de lecturas no bloquea las altas. Si PostgreSQL no permite confirmar una escritura, el POST no debe responder 201; si ya hizo commit pero se perdió la respuesta, debe quedar una sola inscripción y un solo descuento.
 
 **Entregable:** una matriz de fallos con límites medibles y resultados esperados. No hace falta desplegar servicios ni instalar una biblioteca de resiliencia para esta lección.
+
+**Solución de referencia:** [Matriz de fallos para la API de cursos](08-solucion-matriz-de-fallos.md).
