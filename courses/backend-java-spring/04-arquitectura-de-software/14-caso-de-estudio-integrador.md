@@ -28,3 +28,5 @@ Las cifras son criterios del caso, no resultados actuales. Si Catálogo e Inscri
 4. **Emite una decisión.** Recomienda mantener el monolito, optimizarlo o evaluar la extracción de Catálogo. Registra el costo aceptado, la evidencia que falta y la señal que revisaría la decisión. Si propones separar los servicios, explica cómo aprovisionar el cupo sin depender de Catálogo en cada POST ni reponer lugares al repetir un evento.
 
 **Entregable:** informe breve con decisión, estado de cada criterio (verificado, pendiente o no aplicable), enlaces a la evidencia y próximos pasos. El caso no exige crear otro servicio ni cambiar la API solo para demostrar una técnica.
+
+**Solución de referencia:** [Informe de revisión de la campaña](14-informe-campana.md).
