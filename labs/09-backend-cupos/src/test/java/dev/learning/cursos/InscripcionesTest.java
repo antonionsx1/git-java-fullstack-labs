@@ -44,6 +44,9 @@ class InscripcionesTest {
             assertThat(new Integer[] {primera.get(15, TimeUnit.SECONDS), segunda.get(15, TimeUnit.SECONDS)})
                     .containsExactlyInAnyOrder(201, 409);
             verificarEstado(0, 1);
+            assertThat(jdbc.queryForObject(
+                    "SELECT confirmada_en IS NOT NULL FROM inscripcion WHERE curso_id = 1", Boolean.class))
+                    .isTrue();
         } finally {
             pool.shutdownNow();
         }

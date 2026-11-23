@@ -27,7 +27,7 @@ class InscripcionesRepository implements PersistenciaInscripciones {
     @Override
     public void guardarInscripcion(CursoId cursoId, AlumnoId alumnoId) {
         try {
-            jdbc.update("INSERT INTO inscripcion (curso_id, alumno_id) VALUES (?, ?)",
+            jdbc.update("INSERT INTO inscripcion (curso_id, alumno_id, confirmada_en) VALUES (?, ?, CURRENT_TIMESTAMP)",
                     cursoId.valor(), alumnoId.valor());
         } catch (DuplicateKeyException ex) {
             throw new InscripcionDuplicadaException(ex);

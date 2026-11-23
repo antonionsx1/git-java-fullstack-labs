@@ -21,7 +21,7 @@ Que ambos módulos usen la misma base no permite que cualquiera escriba cualquie
 
 ## Evolución del esquema
 
-El `schema.sql` inicializa el laboratorio; `CREATE TABLE IF NOT EXISTS` no actualiza una tabla ya creada. En una aplicación con datos persistentes, registra cambios en migraciones versionadas y comprueba tanto una instalación nueva como la actualización desde el esquema anterior.
+La primera versión del laboratorio usaba `schema.sql`; `CREATE TABLE IF NOT EXISTS` no actualizaba una tabla ya creada. En una aplicación con datos persistentes, registra cambios en migraciones versionadas y comprueba tanto una instalación nueva como la actualización desde el esquema anterior.
 
 Para añadir una columna obligatoria a una tabla en uso, empieza con un cambio compatible, despliega los escritores que ya llenan el campo, completa y verifica las filas previas y solo después aplica la restricción. No inventes valores históricos: si no se conoce la fecha de una inscripción, no la marques como confirmada hoy para satisfacer un `NOT NULL`.
 
@@ -31,4 +31,4 @@ Para añadir una columna obligatoria a una tabla en uso, empieza con un cambio c
 2. Define una segunda migración que agregue `confirmada_en` como `TIMESTAMPTZ` anulable. Conserva `NULL` cuando se desconozca la fecha histórica y haz que las nuevas altas registren su fecha en la misma transacción. Decide qué antiguos escritores pueden coexistir durante el despliegue.
 3. Prueba ambos caminos: base vacía y base con una inscripción anterior. Comprueba que migrar no duplica ni pierde filas, que una alta nueva tiene fecha y que siguen pasando las pruebas de concurrencia y rollback.
 
-**Entregable:** migraciones, plan de adopción y evidencia de los dos caminos de actualización. Esta lección no modifica aún el esquema del laboratorio.
+**Entregable:** migraciones, plan de adopción y evidencia de los dos caminos de actualización. La [solución del laboratorio](../../../labs/09-backend-cupos/README.md#base-existente-sin-flyway) usa Flyway y conserva las fechas históricas desconocidas.
