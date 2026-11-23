@@ -22,7 +22,7 @@ En ejecución, el caso de uso llama al adaptador JDBC **a través** del puerto d
 
 ## La transacción sigue siendo parte del contrato
 
-El [laboratorio](../../../labs/09-backend-cupos/README.md) actual conserva `@Transactional` en `InscripcionesService`. Para mantener un núcleo Java sin Spring, una opción es un decorador transaccional gestionado por Spring que implemente el puerto de entrada y envuelva **toda** la ejecución del caso de uso. Poner una transacción independiente en cada operación del repositorio permitiría descontar un cupo aunque falle la inserción.
+La versión en capas del [laboratorio](../../../labs/09-backend-cupos/README.md) conservaba `@Transactional` en `InscripcionesService`. La solución hexagonal mueve esa anotación a `InscripcionTransaccional`, un decorador gestionado por Spring que implementa el puerto de entrada y envuelve **toda** la ejecución de `InscribirAlumnoCasoDeUso`. Poner una transacción independiente en cada operación del repositorio permitiría descontar un cupo aunque falle la inserción.
 
 Si el adaptador JDBC traduce un duplicado a una excepción propia de la aplicación, deja que esa excepción no comprobada salga del decorador transaccional antes de convertirla en HTTP 409. Si se captura dentro del decorador y se devuelve un resultado normal, se pierde la garantía de rollback automático por esa excepción.
 

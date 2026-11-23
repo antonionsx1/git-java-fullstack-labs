@@ -1,6 +1,7 @@
 package dev.learning.cursos.inscripciones;
 
-import org.springframework.dao.DuplicateKeyException;
+import dev.learning.cursos.inscripciones.aplicacion.InscribirAlumno;
+import dev.learning.cursos.inscripciones.aplicacion.InscripcionDuplicadaException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +12,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 class InscripcionesController {
-    private final InscripcionesService inscripciones;
+    private final InscribirAlumno inscripciones;
 
-    InscripcionesController(InscripcionesService inscripciones) {
+    InscripcionesController(InscribirAlumno inscripciones) {
         this.inscripciones = inscripciones;
     }
 
@@ -27,7 +28,7 @@ class InscripcionesController {
             if (!inscripciones.inscribir(cursoId, alumnoId)) {
                 throw new ResponseStatusException(HttpStatus.CONFLICT, "Cupo no disponible");
             }
-        } catch (DuplicateKeyException ex) {
+        } catch (InscripcionDuplicadaException ex) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Alumno ya inscrito", ex);
         }
     }

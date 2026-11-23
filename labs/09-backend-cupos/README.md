@@ -13,6 +13,8 @@ mvn verify
 
 Usa solo la base del laboratorio: las pruebas limpian las inscripciones del curso de demostración y ajustan su cupo. La prueba concurrente exige exactamente un HTTP 201, un HTTP 409, una fila de inscripción y cero cupos restantes. Otra prueba fuerza una inscripción duplicada y comprueba el rollback del decremento.
 
+Para probar únicamente el caso de uso sin Spring ni PostgreSQL, ejecuta `mvn -Dtest=InscribirAlumnoCasoDeUsoTest test`. Son las pruebas de los casos con y sin cupo de la [lección de arquitectura hexagonal](../../courses/backend-java-spring/04-arquitectura-de-software/04-arquitectura-limpia-y-hexagonal.md).
+
 ## Probar la API
 
 En una base recién iniciada, ejecuta `mvn spring-boot:run` y, desde otra terminal:
