@@ -10,6 +10,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 6. [Microservicios](06-microservicios.md): despliegue independiente, propiedad de datos y extracción del catálogo.
 7. [Comunicación entre servicios](07-comunicacion-entre-servicios.md): llamadas síncronas, eventos e idempotencia.
 8. [Resiliencia](08-resiliencia.md): tiempos de espera, reintentos, aislamiento y degradación controlada.
+9. [Escalabilidad y rendimiento](09-escalabilidad-y-rendimiento.md): métricas, pruebas de carga y diagnóstico de cuellos de botella.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
