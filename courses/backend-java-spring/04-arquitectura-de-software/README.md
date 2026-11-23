@@ -15,6 +15,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 11. [Seguridad](11-seguridad.md): identidad, autorización y protección del flujo de inscripción.
 12. [Observabilidad](12-observabilidad.md): métricas, logs y trazas para diagnosticar la API de cursos.
 13. [Documentación de arquitectura](13-documentacion-de-arquitectura.md): vistas C4, ADR y evidencia verificable.
+14. [Caso de estudio integrador](14-caso-de-estudio-integrador.md): revisión de arquitectura antes de una campaña de inscripciones.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
