@@ -40,3 +40,5 @@ El outbox evita perder el trabajo pendiente al confirmar la publicación del cur
 3. Documenta el contrato y las pruebas como propuesta. Explica qué parte debe seguir funcionando durante una caída de Catálogo y cuál queda pendiente.
 
 **Entregable:** un diagrama de secuencia, el contrato del evento y una tabla de fallos con resultados esperados. No se necesita instalar un intermediario ni cambiar el [laboratorio](../../../labs/09-backend-cupos/README.md).
+
+**Solución de referencia:** [Entrega y procesamiento de CursoPublicado](07-solucion-curso-publicado.md).
