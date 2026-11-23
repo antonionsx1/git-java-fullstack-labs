@@ -37,3 +37,5 @@ Enlaza las pruebas, el código o la guía de arranque, en lugar de repetir instr
 3. Enlaza al menos tres garantías con pruebas del laboratorio. Pide a otra persona que encuentre dónde se valida la identidad, dónde se confirma el alta y cómo consultar las métricas sin adivinar.
 
 **Entregable:** una guía breve y versionada junto al laboratorio, con diagramas y enlaces a evidencia. Esta lección no modifica la API.
+
+**Solución de referencia:** [Guía de arquitectura del último cupo](../../../labs/09-backend-cupos/ARQUITECTURA.md).
