@@ -11,6 +11,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 7. [Comunicación entre servicios](07-comunicacion-entre-servicios.md): llamadas síncronas, eventos e idempotencia.
 8. [Resiliencia](08-resiliencia.md): tiempos de espera, reintentos, aislamiento y degradación controlada.
 9. [Escalabilidad y rendimiento](09-escalabilidad-y-rendimiento.md): métricas, pruebas de carga y diagnóstico de cuellos de botella.
+10. [Arquitectura de datos](10-arquitectura-de-datos.md): propiedad, integridad, transacciones y evolución del esquema.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
