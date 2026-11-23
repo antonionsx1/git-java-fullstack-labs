@@ -9,6 +9,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 5. [Diseño orientado al dominio (DDD)](05-diseno-orientado-al-dominio.md): lenguaje compartido, contextos delimitados e invariantes de inscripción.
 6. [Microservicios](06-microservicios.md): despliegue independiente, propiedad de datos y extracción del catálogo.
 7. [Comunicación entre servicios](07-comunicacion-entre-servicios.md): llamadas síncronas, eventos e idempotencia.
+8. [Resiliencia](08-resiliencia.md): tiempos de espera, reintentos, aislamiento y degradación controlada.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
