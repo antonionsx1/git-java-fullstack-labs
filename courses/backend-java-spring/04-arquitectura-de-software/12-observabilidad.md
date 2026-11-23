@@ -25,4 +25,10 @@ Para detectar saturación, compara el tiempo de respuesta con la espera por cone
 2. Añade un registro estructurado con ID de correlación y código de resultado. Envía una inscripción exitosa, un duplicado, una solicitud sin credenciales y un intento sin cupo. Comprueba qué registros y contadores cambian y que solo los éxitos corresponden a registros confirmados en la base.
 3. Diseña el tramo HTTP → Inscripciones → PostgreSQL. Si no hay un exportador instalado, documenta qué tramos esperas observar; no presentes un diagrama como evidencia de una traza capturada. Define también qué señal diferenciaría un conflicto de negocio de un fallo de PostgreSQL.
 
-**Entregable:** evidencia de métricas y logs con datos de prueba, un esquema de traza y una nota de diagnóstico que explique cómo distinguir los resultados. La lección no cambia todavía el código ni expone endpoints de gestión.
+**Entregable:** evidencia de métricas y logs con datos de prueba, un esquema de traza y una nota de diagnóstico que explique cómo distinguir los resultados.
+
+## Solución de referencia
+
+La [práctica del laboratorio](../../../labs/09-backend-cupos/README.md#consultar-señales) comprueba que los 401 no incrementan el contador de negocio, que un duplicado y un cupo agotado tienen códigos distintos a pesar de compartir HTTP 409, y que un fallo de PostgreSQL durante la inserción devuelve 503 y revierte el decremento.
+
+El recorrido propuesto para una futura traza es `POST /cursos/{cursoId}/inscripciones → caso de uso transaccional → UPDATE cupo e INSERT inscripcion`. El tramo de aplicación debería cubrir el commit o rollback y los tramos SQL no deberían capturar parámetros. Hoy se verifica el ID de correlación en el log; no se configuró un exportador ni se capturó esa traza.

@@ -7,6 +7,7 @@ import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import io.micrometer.core.instrument.MeterRegistry;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -24,14 +25,18 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(OutputCaptureExtension.class)
 class InscripcionesTest {
     private static final String EMISOR = "https://issuer.example.test";
     private static final String AUDIENCIA = "cursos-lab";
@@ -40,6 +45,7 @@ class InscripcionesTest {
 
     @LocalServerPort int port;
     @Autowired JdbcTemplate jdbc;
+    @Autowired MeterRegistry metricas;
     private final HttpClient http = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(5)).build();
 
@@ -144,6 +150,77 @@ class InscripcionesTest {
         assertThat(post(ruta, token(CLAVES, EMISOR, AUDIENCIA, "sin-vinculo", "inscripciones:crear", futuro)))
                 .isEqualTo(403);
         verificarEstado(1, 0);
+    }
+
+    @Test
+    void registraResultadosConCorrelacionYProtegeLasMetricas(CapturedOutput logs) throws Exception {
+        String ruta = "/cursos/1/inscripciones";
+        var alumno = tokenDeAlumno(101);
+        var operador = token(CLAVES, EMISOR, AUDIENCIA, "operador", "observabilidad:leer",
+                Instant.now().plusSeconds(300));
+        String endpoint = "/actuator/metrics/cursos.inscripciones";
+        assertThat(consultar(endpoint, null).statusCode()).isEqualTo(401);
+        assertThat(consultar(endpoint, alumno).statusCode()).isEqualTo(403);
+        assertThat(post(ruta, operador)).isEqualTo(403);
+        assertThat(post(ruta, null)).isEqualTo(401);
+        assertThat(metricas.find("http.server.requests").tag("method", "POST").tag("status", "401").timers())
+                .anyMatch(timer -> timer.count() >= 1);
+
+        double confirmadas = total("confirmada");
+        double duplicadas = total("duplicada");
+        double agotadas = total("cupo_agotado");
+        jdbc.update("UPDATE cupo SET disponibles = 2 WHERE curso_id = 1");
+        var respuesta = http.send(HttpRequest.newBuilder(uri(ruta)).timeout(Duration.ofSeconds(10))
+                        .header("Authorization", "Bearer " + alumno)
+                        .header("X-Request-Id", "ignorar-id-del-cliente")
+                        .POST(HttpRequest.BodyPublishers.noBody()).build(),
+                HttpResponse.BodyHandlers.discarding());
+        assertThat(respuesta.statusCode()).isEqualTo(201);
+        var id = respuesta.headers().firstValue("X-Request-Id").orElseThrow();
+        assertThat(id).matches("[a-f0-9-]{36}");
+        assertThat(logs.getOut().lines()).anyMatch(line -> line.contains("\"requestId\":\"" + id + "\"")
+                && line.contains("\"resultado\":\"confirmada\"") && !line.contains(alumno)
+                && !line.contains("ignorar-id-del-cliente")
+                && line.contains("\"ruta\":\"/cursos/{cursoId}/inscripciones\""));
+
+        assertThat(post(ruta, alumno)).isEqualTo(409);
+        assertThat(inscribir(102)).isEqualTo(201);
+        assertThat(post(ruta, alumno)).isEqualTo(409);
+        assertThat(total("confirmada")).isEqualTo(confirmadas + 2);
+        assertThat(total("duplicada")).isEqualTo(duplicadas + 1);
+        assertThat(total("cupo_agotado")).isEqualTo(agotadas + 1);
+        var consulta = consultar(endpoint, operador);
+        assertThat(consulta.statusCode()).isEqualTo(200);
+        assertThat(consulta.body()).contains("confirmada", "duplicada", "cupo_agotado");
+        verificarEstado(0, 2);
+    }
+
+    @Test
+    void distingueFalloDePostgresYRevierteElCupo() throws Exception {
+        double fallos = total("fallo_persistencia");
+        double confirmadas = total("confirmada");
+        jdbc.execute("ALTER TABLE inscripcion ADD CONSTRAINT prueba_fallo_escritura CHECK (curso_id <> 1) NOT VALID");
+        try {
+            assertThat(inscribir(101)).isEqualTo(503);
+            verificarEstado(1, 0);
+            assertThat(total("fallo_persistencia")).isEqualTo(fallos + 1);
+            assertThat(total("confirmada")).isEqualTo(confirmadas);
+        } finally {
+            jdbc.execute("ALTER TABLE inscripcion DROP CONSTRAINT prueba_fallo_escritura");
+        }
+    }
+
+    private double total(String resultado) {
+        var contador = metricas.find("cursos.inscripciones").tag("resultado", resultado).counter();
+        return contador == null ? 0 : contador.count();
+    }
+
+    private HttpResponse<String> consultar(String ruta, String token) throws Exception {
+        var request = HttpRequest.newBuilder(uri(ruta)).timeout(Duration.ofSeconds(10));
+        if (token != null) {
+            request.header("Authorization", "Bearer " + token);
+        }
+        return http.send(request.build(), HttpResponse.BodyHandlers.ofString());
     }
 
     private int inscribir(long alumno) throws Exception {
