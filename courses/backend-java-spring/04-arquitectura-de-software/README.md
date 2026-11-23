@@ -7,6 +7,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 3. [Arquitectura en capas con Spring](03-arquitectura-en-capas-con-spring.md): responsabilidades, dependencias y límites de la transacción.
 4. [Arquitectura limpia y hexagonal](04-arquitectura-limpia-y-hexagonal.md): regla de dependencias, puertos y adaptadores para el último cupo.
 5. [Diseño orientado al dominio (DDD)](05-diseno-orientado-al-dominio.md): lenguaje compartido, contextos delimitados e invariantes de inscripción.
+6. [Microservicios](06-microservicios.md): despliegue independiente, propiedad de datos y extracción del catálogo.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
