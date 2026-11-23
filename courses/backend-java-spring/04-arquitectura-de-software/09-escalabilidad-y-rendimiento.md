@@ -26,3 +26,5 @@ Separa las métricas por endpoint: mezclar lecturas rápidas con inscripciones l
 3. Escoge **un** cambio según el cuello observado. Repite con los mismos datos y carga, y compara p95, tasa de éxito y uso del recurso limitante. Si modificas el laboratorio, conserva aparte las pruebas de concurrencia y rollback con PostgreSQL.
 
 **Entregable:** protocolo y tabla de antes y después con carga ofrecida, carga completada, p95, tasa de éxito y recurso limitante. Justifica si conviene optimizar, añadir capacidad o probar la extracción de Catálogo. No reportes mejoras sin mediciones.
+
+**Práctica de referencia:** [comparación local de GET /cursos con y sin gzip](../../../labs/09-backend-cupos/benchmark/README.md).
