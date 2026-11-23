@@ -12,6 +12,7 @@ Este módulo refuerza la teoría de arquitectura con decisiones aplicadas a un b
 8. [Resiliencia](08-resiliencia.md): tiempos de espera, reintentos, aislamiento y degradación controlada.
 9. [Escalabilidad y rendimiento](09-escalabilidad-y-rendimiento.md): métricas, pruebas de carga y diagnóstico de cuellos de botella.
 10. [Arquitectura de datos](10-arquitectura-de-datos.md): propiedad, integridad, transacciones y evolución del esquema.
+11. [Seguridad](11-seguridad.md): identidad, autorización y protección del flujo de inscripción.
 
 **Ejemplo resuelto:** [ADR 001: monolito modular para la API de cursos](adr/001-monolito-modular.md).
 
