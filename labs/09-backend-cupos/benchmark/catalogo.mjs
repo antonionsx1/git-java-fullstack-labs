@@ -63,6 +63,7 @@ async function run(compressed, repetition) {
     const java = process.env.JAVA_HOME ? `${process.env.JAVA_HOME}/bin/java.exe` : 'java';
     const app = spawn(java, [
         '-Xms256m', '-Xmx512m', '-jar', jar, '--server.port=58081',
+        '--spring.flyway.locations=classpath:db/migration,filesystem:benchmark/migration',
         `--server.compression.enabled=${compressed}`,
     ], { windowsHide: true, stdio: ['ignore', 'ignore', 'inherit'] });
     const closed = once(app, 'close');

@@ -15,6 +15,16 @@ Usa solo la base del laboratorio: las pruebas limpian las inscripciones del curs
 
 Para probar únicamente el caso de uso sin Spring ni PostgreSQL, ejecuta `mvn -Dtest=InscribirAlumnoCasoDeUsoTest test`. Son las pruebas de los casos con y sin cupo de la [lección de arquitectura hexagonal](../../courses/backend-java-spring/04-arquitectura-de-software/04-arquitectura-limpia-y-hexagonal.md).
 
+## Base existente sin Flyway
+
+En una base vacía, Flyway ejecuta V1, V2 y V3 automáticamente. En una base creada por la versión anterior, el arranque normal rechaza la adopción automática:
+
+1. Detén los escritores y respalda la base. En una copia, compara tablas, tipos, nulabilidad, restricciones e índices con [V1](src/main/resources/db/migration/V1__esquema_inicial.sql), por ejemplo con `pg_dump --schema-only`. Si hay diferencias o ya existe un historial de Flyway, no marques V1 a ciegas.
+2. Solo tras comprobar la coincidencia y ensayar la actualización en la copia, arranca una vez con `mvn spring-boot:run "-Dspring-boot.run.arguments=--spring.flyway.baseline-on-migrate=true --spring.flyway.baseline-version=1"`. Flyway marca V1 como punto de partida y ejecuta V2 y V3. No dejes esa opción habilitada para los siguientes arranques.
+3. Comprueba el historial de Flyway y los conteos y cupos previos. V2 deja `confirmada_en` en `NULL` para inscripciones históricas; V3 no sobrescribe el curso de demostración ni repone su cupo si ya existe.
+
+Las altas nuevas escriben la fecha de confirmación en la misma transacción que consume el cupo. El contrato HTTP no cambia.
+
 ## Probar la API
 
 En una base recién iniciada, ejecuta `mvn spring-boot:run` y, desde otra terminal:

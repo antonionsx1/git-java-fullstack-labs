@@ -14,7 +14,6 @@ docker exec backend-cupos-benchmark pg_isready -U lab -d cursos_benchmark
 Cuando PostgreSQL acepte conexiones:
 
 ```powershell
-docker exec backend-cupos-benchmark psql -U lab -d cursos_benchmark -v ON_ERROR_STOP=1 -c "CREATE TABLE curso (id BIGINT PRIMARY KEY, titulo TEXT NOT NULL); INSERT INTO curso SELECT i, 'Curso ' || i || ' - Java y Spring: APIs, persistencia y pruebas - ' || md5(i::text) FROM generate_series(2,5000) AS i; ANALYZE curso;"
 mvn -B -ntp -DskipTests package
 $env:CURSOS_JDBC_URL='jdbc:postgresql://127.0.0.1:55433/cursos_benchmark'
 $env:CURSOS_DB_USER='lab'
@@ -23,7 +22,7 @@ node benchmark/catalogo.mjs
 docker stop backend-cupos-benchmark
 ```
 
-La inicialización de Spring agrega el curso 1 para completar 5 000 filas. El script arranca una JVM nueva por ronda (heap de 256 a 512 MiB), calienta 3 s y mide 6 s por nivel a 25, 50 y 100 solicitudes/s. Ejecuta dos rondas por variante en orden sin compresión, gzip, gzip, sin compresión, para reducir el efecto del orden. Usa 24 conexiones HTTP como máximo y un límite de 2 s por solicitud.
+El benchmark carga los mismos 5 000 cursos mediante una migración adicional exclusiva de su base temporal. El script arranca una JVM nueva por ronda (heap de 256 a 512 MiB), calienta 3 s y mide 6 s por nivel a 25, 50 y 100 solicitudes/s. Ejecuta dos rondas por variante en orden sin compresión, gzip, gzip, sin compresión, para reducir el efecto del orden. Usa 24 conexiones HTTP como máximo y un límite de 2 s por solicitud.
 
 Esta es una comparación local corta, no el protocolo prolongado de la lección. El p95 mide del envío por el cliente Node hasta recibir todo el cuerpo, sin descomprimirlo. El retraso de arranque se registra aparte. Se cuentan respuestas HTTP 200 completas como éxitos, y los bytes corresponden solo al cuerpo de una respuesta, no a cabeceras ni a tráfico de transporte.
 
