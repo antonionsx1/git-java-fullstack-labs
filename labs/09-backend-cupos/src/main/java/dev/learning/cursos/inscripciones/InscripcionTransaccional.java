@@ -1,5 +1,8 @@
 package dev.learning.cursos.inscripciones;
 
+import dev.learning.cursos.inscripciones.dominio.AlumnoId;
+import dev.learning.cursos.inscripciones.dominio.CursoId;
+
 import dev.learning.cursos.inscripciones.aplicacion.InscribirAlumno;
 import dev.learning.cursos.inscripciones.aplicacion.InscribirAlumnoCasoDeUso;
 import dev.learning.cursos.inscripciones.aplicacion.PersistenciaInscripciones;
@@ -16,7 +19,7 @@ class InscripcionTransaccional implements InscribirAlumno {
 
     @Override
     @Transactional
-    public boolean inscribir(long cursoId, long alumnoId) {
+    public boolean inscribir(CursoId cursoId, AlumnoId alumnoId) {
         return casoDeUso.inscribir(cursoId, alumnoId);
     }
 }

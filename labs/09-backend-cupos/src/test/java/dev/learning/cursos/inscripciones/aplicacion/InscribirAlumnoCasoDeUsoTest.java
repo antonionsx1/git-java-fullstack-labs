@@ -2,6 +2,8 @@ package dev.learning.cursos.inscripciones.aplicacion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.learning.cursos.inscripciones.dominio.AlumnoId;
+import dev.learning.cursos.inscripciones.dominio.CursoId;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,8 @@ class InscribirAlumnoCasoDeUsoTest {
     void conCupoGuardaLaInscripcion() {
         var persistencia = new PersistenciaDePrueba(true);
 
-        assertThat(new InscribirAlumnoCasoDeUso(persistencia).inscribir(1, 101)).isTrue();
+        assertThat(new InscribirAlumnoCasoDeUso(persistencia)
+                .inscribir(new CursoId(1), new AlumnoId(101))).isTrue();
         assertThat(persistencia.operaciones).containsExactly("cupo:1", "guardar:1:101");
     }
 
@@ -19,7 +22,8 @@ class InscribirAlumnoCasoDeUsoTest {
     void sinCupoNoIntentaGuardar() {
         var persistencia = new PersistenciaDePrueba(false);
 
-        assertThat(new InscribirAlumnoCasoDeUso(persistencia).inscribir(1, 101)).isFalse();
+        assertThat(new InscribirAlumnoCasoDeUso(persistencia)
+                .inscribir(new CursoId(1), new AlumnoId(101))).isFalse();
         assertThat(persistencia.operaciones).containsExactly("cupo:1");
     }
 
@@ -32,14 +36,14 @@ class InscribirAlumnoCasoDeUsoTest {
         }
 
         @Override
-        public boolean consumirCupo(long cursoId) {
-            operaciones.add("cupo:" + cursoId);
+        public boolean consumirCupo(CursoId cursoId) {
+            operaciones.add("cupo:" + cursoId.valor());
             return hayCupo;
         }
 
         @Override
-        public void guardarInscripcion(long cursoId, long alumnoId) {
-            operaciones.add("guardar:" + cursoId + ":" + alumnoId);
+        public void guardarInscripcion(CursoId cursoId, AlumnoId alumnoId) {
+            operaciones.add("guardar:" + cursoId.valor() + ":" + alumnoId.valor());
         }
     }
 }

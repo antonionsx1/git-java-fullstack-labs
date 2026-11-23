@@ -1,5 +1,8 @@
 package dev.learning.cursos.inscripciones.aplicacion;
 
+import dev.learning.cursos.inscripciones.dominio.AlumnoId;
+import dev.learning.cursos.inscripciones.dominio.CursoId;
+
 public class InscribirAlumnoCasoDeUso implements InscribirAlumno {
     private final PersistenciaInscripciones persistencia;
 
@@ -8,7 +11,7 @@ public class InscribirAlumnoCasoDeUso implements InscribirAlumno {
     }
 
     @Override
-    public boolean inscribir(long cursoId, long alumnoId) {
+    public boolean inscribir(CursoId cursoId, AlumnoId alumnoId) {
         if (!persistencia.consumirCupo(cursoId)) {
             return false;
         }

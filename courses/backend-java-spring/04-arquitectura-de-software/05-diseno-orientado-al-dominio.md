@@ -29,3 +29,13 @@ Una **invariante** es una regla que debe seguir siendo cierta tras cada operaci�
 3. Añade pruebas unitarias de los valores y ejecuta `mvn verify` contra PostgreSQL. Deben conservarse la inscripción única bajo concurrencia y la devolución del cupo cuando falla un duplicado.
 
 **Entregable:** glosario, mapa de contextos y un diff que muestre qué error evita el modelo Java y qué regla sigue protegiendo PostgreSQL. No se requiere crear otro servicio ni cambiar el esquema.
+
+## Solución de referencia
+
+```text
+Catálogo                         Inscripciones
+Curso publicado                  Cupo del curso e inscripción
+                  cursoId  --->  Referencia al curso, sin copiar su modelo
+```
+
+En el laboratorio, el controlador construye `CursoId` y `AlumnoId` y convierte un valor no positivo en HTTP 400. Los puertos usan los tipos del dominio, y el adaptador JDBC recupera el número solo al preparar el SQL. El compilador impide intercambiar ambos identificadores; PostgreSQL y la transacción siguen garantizando que una inscripción no duplique el registro ni consuma un cupo adicional.

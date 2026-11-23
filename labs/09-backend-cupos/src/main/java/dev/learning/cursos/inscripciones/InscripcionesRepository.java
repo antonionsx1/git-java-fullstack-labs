@@ -1,5 +1,8 @@
 package dev.learning.cursos.inscripciones;
 
+import dev.learning.cursos.inscripciones.dominio.AlumnoId;
+import dev.learning.cursos.inscripciones.dominio.CursoId;
+
 import dev.learning.cursos.inscripciones.aplicacion.InscripcionDuplicadaException;
 import dev.learning.cursos.inscripciones.aplicacion.PersistenciaInscripciones;
 import org.springframework.dao.DuplicateKeyException;
@@ -15,16 +18,17 @@ class InscripcionesRepository implements PersistenciaInscripciones {
     }
 
     @Override
-    public boolean consumirCupo(long cursoId) {
+    public boolean consumirCupo(CursoId cursoId) {
         return jdbc.update(
                 "UPDATE cupo SET disponibles = disponibles - 1 WHERE curso_id = ? AND disponibles > 0",
-                cursoId) == 1;
+                cursoId.valor()) == 1;
     }
 
     @Override
-    public void guardarInscripcion(long cursoId, long alumnoId) {
+    public void guardarInscripcion(CursoId cursoId, AlumnoId alumnoId) {
         try {
-            jdbc.update("INSERT INTO inscripcion (curso_id, alumno_id) VALUES (?, ?)", cursoId, alumnoId);
+            jdbc.update("INSERT INTO inscripcion (curso_id, alumno_id) VALUES (?, ?)",
+                    cursoId.valor(), alumnoId.valor());
         } catch (DuplicateKeyException ex) {
             throw new InscripcionDuplicadaException(ex);
         }
