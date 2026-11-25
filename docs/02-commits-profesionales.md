@@ -20,6 +20,10 @@ git show --stat
 
 `amend` es para trabajo todavía no compartido. No mezcles formato masivo, refactor y funcionalidad.
 
+### Escribir el mensaje con Vim
+
+Si `git commit` abre Vim, pulsa `i`, escribe el mensaje y pulsa `Esc` para volver al modo normal. Ejecuta `:wq` para guardar y continuar. Para abortar el commit desde Vim, usa `:cq`, que devuelve un error a Git. `git var GIT_EDITOR` muestra el editor que Git usaría.
+
 ## Laboratorio
 
 Implementa una validación en un commit, su prueba en otro y documentación en un tercero. Cada commit debe pasar `mvn verify` y ser revisable aisladamente.
